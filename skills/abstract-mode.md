@@ -1,691 +1,577 @@
 ---
 name: abstract-mode
-description: "L0-L4抽象度管理とNotion擬似プログラミングガイド"
+description: "L0-L4抽象度管理とIDE擬似プログラミングガイド"
 license: "MIT"
 ---
 
 # CTX_abstract_mode_rules
 
-最終更新日時: 2025年12月28日 16:43
+最終更新日時: 2026年1月20日
 
-# abstract_rules:notion_pseudo_programming - Notion擬似プログラミングガイド
+# abstract_rules:ide_development - IDE開発ガイド
 
-<aside>
-💡
+> **AIPOの抽象化モードは「IDEで動くシステム」を作ります**
+>
+> 設計書だけでなく、**実際のコード・設定ファイル・スキーマ**を生成して、実行可能なアプリケーションを構築します。
+>
+> このページは、IDEでできること・作るべき成果物を明確にし、実装タスクの正しい進め方を定義します。
 
-**AIPOの抽象化モードは「Notionで動くシステム」を作ります**
+---
 
-コードではなく、**NotionのDatabase・Form・AI機能**を組み合わせて、実行可能なアプリケーションを構築します。
+## 🚨 最重要原則：必ず実際のコードを生成する
 
-このページは、Notionでできること・できないことを明確にし、実装タスクの正しい進め方を定義します。
-
-</aside>
-
-<aside>
-🚨
-
-## **AIPOの抽象化モードの目的は「動くDatabase/システム」を作ること。**
+**AIPOの抽象化モードの目的は「動くコード/システム」を作ること。**
 
 セッション中、以下を常に確認すること：
 
 ```yaml
 session_reminder:
   every_task:
-    question: "このタスクで実際のDatabaseは作成/更新されたか？"
-    if_no: "完了とせず、DB作成を実行する"
+    question: "このタスクで実際のファイルは作成/更新されたか？"
+    if_no: "完了とせず、ファイル生成を実行する"
   
   every_completion:
-    check: "ガイド/設計書だけで終わっていないか？"
-    if_yes: "実際のDB作成を追加実行する"
+    check: "設計書/ガイドだけで終わっていないか？"
+    if_yes: "実際のコード生成を追加実行する"
   
   session_end:
-    verify: "このセッションで作成されたDBの数を報告"
+    verify: "このセッションで作成されたファイルの数を報告"
     format: |
-      📊 DB作成サマリ
-      - 作成したDB: X件
-      - 更新したDB: Y件
-      - 作成したページ（ガイド等）: Z件
+      📊 成果物サマリ
+      - 作成したコードファイル: X件
+      - 更新したファイル: Y件
+      - 作成した設計ドキュメント: Z件
       
-      ⚠️ ページ数 > DB数 の場合、追加でDB作成が必要
+      ⚠️ ドキュメント数 > コードファイル数 の場合、追加でコード生成が必要
 ```
 
 **このルールはセッション全体を通じて適用される。**
 
-</aside>
+---
+
+## 🎯 抽象度レベル（L0-L4）
+
+AIPOは5段階の抽象度レベルでプロダクト開発を管理します：
+
+| Level | 名称 | 説明 | 主な成果物 |
+|-------|------|------|-----------|
+| **L0** | コンセプト | アイデア・仮説段階 | コンセプトドキュメント、仮説リスト |
+| **L1** | 設計 | アーキテクチャ・設計段階 | 設計書、ER図、API仕様 |
+| **L2** | スキーマ | 型定義・スキーマ段階 | Prismaスキーマ、TypeScript型、OpenAPI |
+| **L3** | 実装 | コード実装段階 | ソースコード、テストコード |
+| **L4** | 運用 | デプロイ・運用段階 | CI/CD、監視設定、ドキュメント |
+
+```
+L0 コンセプト
+  ↓ 具体化
+L1 設計
+  ↓ 具体化
+L2 スキーマ
+  ↓ 具体化
+L3 実装
+  ↓ 具体化
+L4 運用
+```
 
 ---
 
----
+## 🤖 コマンド駆動開発【最重要】
 
-## 🤖 運用Commands方式【最重要】
+IDEでの開発は**コマンド（テンプレート）駆動**で行います。
+各フェーズに対応するコマンドテンプレートを実行し、成果物を生成します。
 
-<aside>
-⚡
+### 🎯 コマンド駆動とは
 
-Notion擬似プログラミングで**実際に動く実行プラットフォーム**を構築する唯一の実用的方法です。
-
-@mentionでAIを呼び出し、ページ作成・更新を自動化する実行可能なコマンドシステムです。
-
-</aside>
-
-### 🎯 運用Commandsとは
-
-**運用Commands**は、Notionページとして実装された「実行可能なコマンド」です。
+**コマンド駆動開発**は、定義済みのテンプレートを使って、一貫した品質で成果物を生成する方式です。
 
 **特徴**：
-
-- チャットで`@コマンド名`で呼び出し
-- 変数を受け取って柔軟に実行
-- DBからデータ取得・処理・更新
-- ページ作成・更新を自動化
-- 繰り返し実行可能（量産対応）
+- テンプレートを`@`メンションで呼び出し
+- 必要な情報を質問形式で収集
+- 成果物を自動生成
+- チェックリストで品質保証
+- 繰り返し実行可能（再現性）
 
 ### 📐 実装パターン
 
-### 1. Database設計
+#### 1. ディレクトリ構造設計
 
 ```yaml
-# 入力DB
-記事入力管理:
-  properties:
-    - URL情報: url
-    - テーマ: text
-    - 対象人物: person
-    - ステータス: select [入力済み, 分析完了, 構成案作成完了]
-  form: あり（ユーザーが入力）
-
-# 出力DB
-記事構成案管理:
-  properties:
-    - パターン名: title
-    - 章構成: text
-    - 文字数配分: text
-    - 元入力: relation → 記事入力管理
+# プロジェクト構造
+project/
+├── src/
+│   ├── app/              # Next.js App Router
+│   ├── components/       # UIコンポーネント
+│   │   ├── ui/          # 基本UI (shadcn/ui等)
+│   │   ├── features/    # 機能別コンポーネント
+│   │   └── layouts/     # レイアウト
+│   ├── lib/             # ユーティリティ
+│   │   ├── api/         # APIクライアント
+│   │   ├── db.ts        # DB接続
+│   │   └── utils/       # ヘルパー
+│   ├── services/        # ビジネスロジック
+│   ├── repositories/    # データアクセス
+│   └── types/           # 型定義
+├── prisma/
+│   ├── schema.prisma    # DBスキーマ
+│   └── seed.ts          # シードデータ
+├── tests/
+│   ├── unit/            # 単体テスト
+│   ├── integration/     # 統合テスト
+│   └── e2e/             # E2Eテスト
+└── docs/
+    ├── api/             # API仕様
+    ├── development/     # 開発ガイド
+    └── operations/      # 運用ガイド
 ```
 
-### 2. 運用Commandsページ作成
+#### 2. コマンドテンプレート実行
 
 ```markdown
-# CMD-SG1-001: 入力分析コマンド
+# 実行例: データベース設計
 
-## 📌 コマンド概要
-**目的**: 入力データを分析し、YAML形式で結果を出力
+@CMD_sys_02_データベース設計.md を実行してください
 
-## 📥 Input
-- **入力データ**: @mention形式でページ指定
-- **分析対象**: URL情報、テーマ、対象人物
-
-## 📤 Output
-- **形式**: YAML（ページ本文に追記）
-- **内容**: URL分析結果、テーマ分析結果
-- **DB更新**: ステータスを「分析完了」に変更
-
-## 🔧 実行方法
-```
-
-@AIPO_05_operation を実行してください
-
-Command: @CMD-SG1-001
-
-入力データ: @ページ名
-
-```
-
-## 📋 処理ロジック
-1. 指定ページから入力データ取得
-2. URL情報を分析（サイト概要、コンテンツタイプ）
-3. テーマを分析（キーワード抽出、関連トピック）
-4. 結果をYAML形式でページ本文に出力
-5. ステータスを「分析完了」に更新
-```
-
-### 3. 実行例
-
-```jsx
-// チャットで実行
-@AIPO_05_operation @CMD-SG1-001 を実行してください
-
-入力データ: @記事入力_20251207_001
+## 入力情報
+- DB種別: PostgreSQL
+- ORMツール: Prisma
+- エンティティ: User, Project, Task
 ```
 
 **実行結果**：
+- AIが質問に回答を収集
+- Prismaスキーマを生成
+- ER図を作成
+- マイグレーションファイルを生成
+- シードスクリプトを作成
 
-- AIが指定ページを読み込み
-- 分析処理を実行
-- ページ本文に以下を追記：
+#### 3. 成果物の例
 
-```yaml
-# 分析結果
+```prisma
+// prisma/schema.prisma（生成されるファイル）
 
-url_analysis:
-  site_name: "TechCrunch"
-  content_type: "ニュース記事"
-  main_topic: "AI技術動向"
+generator client {
+  provider = "prisma-client-js"
+}
 
-theme_analysis:
-  keywords: ["生成AI", "LLM", "プロダクト開発"]
-  related_topics: ["API設計", "ユーザー体験"]
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(uuid())
+  email     String    @unique
+  name      String
+  role      Role      @default(USER)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  projects  Project[] @relation("ProjectOwner")
+  tasks     Task[]    @relation("TaskAssignee")
+}
+
+model Project {
+  id          String        @id @default(uuid())
+  name        String
+  description String?
+  status      ProjectStatus @default(DRAFT)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  ownerId String
+  owner   User   @relation("ProjectOwner", fields: [ownerId], references: [id])
+
+  tasks Task[]
+}
+
+model Task {
+  id        String     @id @default(uuid())
+  title     String
+  content   String?
+  status    TaskStatus @default(TODO)
+  dueDate   DateTime?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  projectId  String
+  project    Project @relation(fields: [projectId], references: [id])
+
+  assigneeId String?
+  assignee   User?   @relation("TaskAssignee", fields: [assigneeId], references: [id])
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum ProjectStatus {
+  DRAFT
+  ACTIVE
+  ARCHIVED
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  DONE
+}
 ```
 
-- DBのステータスを「分析完了」に更新
+### 🔄 抽象度レベル別の成果物
 
-### 🔄 Database + 運用Commands = 実行プラットフォーム
-
-| **要素** | **役割** | **例** |
-| --- | --- | --- |
-| **入力DB + Form** | データ入力・状態管理 | 記事入力管理DB |
-| **運用Commands** | 処理ロジック | CMD-入力分析、CMD-構成案生成 |
-| **出力DB** | 成果物管理 | 記事構成案管理DB |
-
-**実行フロー**：
-
-1. ユーザーがFormから入力 → 入力DB
-2. `@AIPO_05_operation`で`@CMD-入力分析`実行 → 分析結果をページに追記 → ステータス更新
-3. `@AIPO_05_operation`で`@CMD-構成案生成`実行 → 出力DBに3-5件のページを作成
-4. ユーザーが出力DBで確認・選択
+| Level | コマンド | 成果物 |
+|-------|---------|--------|
+| **L1** | CMD_sys_01_アーキテクチャ設計 | architecture.md, tech-stack.md |
+| **L2** | CMD_sys_02_データベース設計 | schema.prisma, er-diagram.mermaid |
+| **L2** | CMD_sys_03_API設計 | openapi.yaml, types/api.ts |
+| **L3** | CMD_sys_04_フロントエンド設計 | components/, pages/, hooks/ |
+| **L3** | CMD_sys_05_バックエンド実装 | services/, repositories/, routes/ |
+| **L3** | CMD_sys_06_テスト設計 | tests/, vitest.config.ts |
+| **L4** | CMD_sys_07_デプロイ設計 | .github/workflows/, vercel.json |
+| **L4** | CMD_sys_08_ドキュメント整備 | README.md, docs/ |
 
 ### 📚 実装ガイドライン
 
-**1. コマンドページの構成**
+**1. ファイル生成の原則**
 
-```markdown
-# CMD-XXX: [コマンド名]
-
-## 📌 コマンド概要
-## 📥 Input
-## 📤 Output  
-## 🔧 実行方法
-## 📋 処理ロジック
-## ⚠️ 注意事項
-## 🔗 関連リソース
+```yaml
+原則:
+  - 設計書だけで終わらない → 必ずコードも生成
+  - 1タスク = 1ファイル以上の成果物
+  - 動作確認可能な状態まで実装
+  
+禁止:
+  - "後で実装する"で終わること
+  - 設計書のみを成果物とすること
+  - 動作確認なしで完了とすること
 ```
 
 **2. 命名規則**
 
-- `CMD-[LayerID]-[番号]`: 例 `CMD-SG1-001`
-- 動詞で始める: 「入力分析」「構成案生成」
+```yaml
+ファイル命名:
+  コンポーネント: PascalCase (UserCard.tsx)
+  ユーティリティ: camelCase (formatDate.ts)
+  定数: UPPER_SNAKE_CASE (API_ENDPOINTS.ts)
+  テスト: *.test.ts または *.spec.ts
 
-**3. フォルダ構成**
-
-```
-📁 [Layer]/
-├── 📁 運用コマンド/
-│   ├── 📄 CMD-SG1-001_入力分析
-│   ├── 📄 CMD-SG1-002_構成案生成
-│   └── 📄 ...
-├── 📊 入力管理DB
-└── 📊 出力管理DB
+ディレクトリ命名:
+  機能別: kebab-case (user-management/)
+  コンポーネント別: PascalCase (UserCard/)
 ```
 
-**4. Abstract Mode標準パターン**
-
-Abstract Modeでプラットフォームを構築する際の標準タスク分解：
+**3. コード生成の順序**
 
 ```yaml
-tasks:
-  - T001: Database設計・作成
-      deliverable: 入力DB + 出力DB（Formを含む）
-      
-  - T002: 運用Commands作成
-      deliverable: CMD-001, CMD-002, ...（実行ロジック）
-      
-  - T003: 動作検証
-      deliverable: テストデータでの実行確認
-```
-
-### 🚀 AIPOでの位置づけ
-
-**運用Commands = Abstract Modeの成果物**
-
-- **AIPO_04_execute**（構築フェーズ）: Database + 運用Commandsを作成
-- **AIPO_05_operation**（運用フェーズ）: 運用Commandsを実行して量産
-
-```yaml
-# AIPO_04で構築
-Layer: SG1_アイディア収集・構成案生成
-mode: abstract
-成果物:
-  - 記事入力管理DB
-  - 記事構成案管理DB
-  - CMD-SG1-001（入力分析）
-  - CMD-SG1-002（構成案生成）
-
-# AIPO_05で運用
-実行: @AIPO_05_operation (Command: @CMD-SG1-001, 入力: @データ1)
-実行: @AIPO_05_operation (Command: @CMD-SG1-002, 入力: @データ1)
-実行: @AIPO_05_operation (Command: @CMD-SG1-001, 入力: @データ2)
-実行: @AIPO_05_operation (Command: @CMD-SG1-002, 入力: @データ2)
-...
-```
-
-### 💡 まとめ
-
-<aside>
-✨
-
-**運用Commands = Notion擬似プログラミングの到達点**
-
-NotionのDatabase、Form、AIを組み合わせて：
-
-- ✅ データ入力・管理（Database + Form）
-- ✅ 処理ロジック（運用Commands）
-- ✅ 自動実行・量産（@mention実行）
-- ✅ チーム共有・再利用（コマンドページ）
-
-**コードなしで「動くシステム」を構築できます。**
-
-</aside>
-
-**実装例**: [SG1_アイディア収集・構成案生成](https://www.notion.so/SG1_-de193ca8dece4f8cb583c925316e7b2f?pvs=21)
-
----
-
-## ✅ Notionでできること（実装可能）
-
-### 1. データ構造・状態管理（Database）
-
-<aside>
-🗄️
-
-**Databaseは「テーブル＋ビジネスロジック」**
-
-単なるデータ保存ではなく、リレーション・Formula・AI自動入力機能により、リアルタイムで動作するデータ構造を実現できます。
-
-</aside>
-
-**できること：**
-
-```yaml
-Database機能:
-  property_types:
-    - Title, Text, Number, Date, Checkbox
-    - Select, Multi-select, Status（ステータス遷移）
-    - Person（メンバー管理）
-    - Relation（他DBとの関連付け）
-    - Rollup（関連DBから集計）
-    - Formula（計算・条件分岐）
-    
-  views:
-    - Table: 表形式
-    - Board: Kanban形式（ステータス別）
-    - Calendar: カレンダー形式
-    - Gallery: カード形式
-    - List: リスト形式
-    - Timeline: ガントチャート
-    
-  filters_and_sorts:
-    - 複雑な条件でフィルタリング
-    - 複数条件でソート
-    - Viewごとに異なる表示
-```
-
-**実装例：記事管理Database**
-
-```yaml
-Database: 記事管理DB
-  properties:
-    - タイトル（Title）
-    - ステータス（Status: 企画中/執筆中/レビュー中/公開済み）
-    - 担当者（Person）
-    - 締切（Date）
-    - 文字数（Number）
-    - 関連記事（Relation → 記事管理DB）
-    - 執筆進捗率（Formula: 文字数/目標文字数）
-    
-  views:
-    - 執筆中ビュー（Filter: Status = 執筆中）
-    - 担当者別ビュー（Group by: 担当者）
-    - 締切順ビュー（Sort by: 締切）
+推奨順序:
+  1. 型定義 (types/)
+  2. スキーマ (prisma/schema.prisma)
+  3. リポジトリ層 (repositories/)
+  4. サービス層 (services/)
+  5. APIルート (app/api/)
+  6. コンポーネント (components/)
+  7. ページ (app/)
+  8. テスト (tests/)
 ```
 
 ---
 
-### 2. 入力機構（Form）
+## ✅ IDEでできること（実装可能）
 
-<aside>
-📝
-
-**Formでデータ入力**
-
-Notion公式のForm機能を使えば、ユーザーから構造化データを収集できます。
-
-</aside>
-
-**できること：**
+### 1. ファイル・コード生成
 
 ```yaml
-Form機能:
-  - Databaseへのデータ入力フォーム
-  - 公開URL共有可能（外部からの入力受付）
-  - 必須項目設定
-  - プロパティ別の入力タイプ
-  
-  実装例:
-    - 記事入力フォーム
-    - タスク登録フォーム
-    - フィードバック収集フォーム
+生成可能なファイル:
+  設計ドキュメント:
+    - README.md
+    - architecture.md
+    - api-spec.yaml (OpenAPI)
+    - er-diagram.mermaid
+    
+  スキーマ・型定義:
+    - prisma/schema.prisma
+    - src/types/*.ts
+    - zod schemas
+    
+  ソースコード:
+    - React/Next.js コンポーネント
+    - API Routes / Server Actions
+    - サービス層 / リポジトリ層
+    - ユーティリティ関数
+    
+  テストコード:
+    - 単体テスト (Vitest)
+    - 統合テスト
+    - E2Eテスト (Playwright)
+    
+  設定ファイル:
+    - package.json
+    - tsconfig.json
+    - tailwind.config.ts
+    - vitest.config.ts
+    - .github/workflows/*.yml
 ```
 
-**公式ドキュメント：**
+### 2. ファイル編集・リファクタリング
 
-- Form: [https://www.notion.so/help/guides/creating-a-form-with-a-notion-database](https://www.notion.so/help/guides/creating-a-form-with-a-notion-database)
+```yaml
+編集操作:
+  - 既存ファイルの修正
+  - コードの追加・削除
+  - リファクタリング
+  - 型の修正
+  - インポート整理
+  
+リファクタリング:
+  - 関数の抽出
+  - コンポーネントの分割
+  - 型の共通化
+  - 重複コードの削除
+```
+
+### 3. プロジェクト構造の構築
+
+```yaml
+構造構築:
+  - ディレクトリ作成
+  - ファイル配置
+  - モジュール構成
+  - レイヤー分離
+  
+自動化:
+  - Lintエラー修正
+  - 型エラー修正
+  - インポートパス更新
+```
 
 ---
 
-### 3. 処理ロジック（Formula・AI自動入力）
-
-<aside>
-🤖
-
-**Formula と AI自動入力で簡単な処理**
-
-DatabaseプロパティでFormula計算とAI自動入力が利用可能です。
-
-</aside>
-
-### Formula
+## ❌ IDEでできないこと（注意点）
 
 ```yaml
-Formula機能:
-  - Property値の計算
-  - 条件分岐（if文的な動作）
-  - 日付計算・文字列操作
-  - 数値計算・集計
+直接実行できないこと:
   
-  実装例:
-    進捗率: prop("完了タスク数") / prop("総タスク数") * 100
-    期限ステータス: if(prop("締切") < now(), "期限切れ", "進行中")
-    タグ結合: prop("タグ1") + ", " + prop("タグ2")
-```
-
-### AI自動入力
-
-<aside>
-⚠️
-
-**制約に注意**
-
-AI自動入力は**ページ内コンテンツのみ**を処理対象とします。
-
-- ✅ ページ本文の要約・翻訳・重要情報抽出
-- ❌ URL先の情報取得
-- ❌ 外部情報ソースへのアクセス
-- ❌ Web検索
-
-**ツールなしのAI処理のみ**であることに注意してください。
-
-</aside>
-
-**できること：**
-
-```yaml
-AI自動入力機能:
-  設定方法:
-    1. Databaseの右上の「＋」をクリック
-    2. 「テキスト」プロパティを作成
-    3. プロパティをクリック→「AI自動入力を設定」
+  1. ランタイム実行:
+    - サーバー起動（手動でnpm run devが必要）
+    - ブラウザでの動作確認
+    - DBマイグレーション実行
+    → 対応: コマンドを提示し、ユーザーに実行を依頼
     
-  入力対象オプション:
-    - 要約: ページのコンテンツを要約
-    - 翻訳: 対象コンテンツを他言語に翻訳
-    - 重要情報: ページ内から重要情報を抽出
-    - カスタム自動入力: カスタムプロンプトで生成
-  
-  制約:
-    - 処理対象: ページ本文のみ
-    - URL先の情報取得: 不可
-    - 外部情報アクセス: 不可
-    - Web検索: 不可
+  2. 外部サービス連携:
+    - 実際のAPIコール
+    - DB接続テスト
+    - 認証フロー確認
+    → 対応: モックを使ったテストコードを生成
     
-  実装例:
-    要約プロパティ: ページ本文を200文字で要約
-    翻訳プロパティ: 日本語→英語に翻訳
-    アクションアイテム: カスタムプロンプトで抽出
-```
-
-**公式ドキュメント：**
-
-- Formula: [https://www.notion.so/help/formulas](https://www.notion.so/help/formulas)
-- AI自動入力: [https://www.notion.so/help/guides/using-ai-autofill-in-databases](https://www.notion.so/help/guides/using-ai-autofill-in-databases)
-
----
-
-## ❌ Notionでできないこと（実装不可）
-
-<aside>
-🚫
-
-**以下はNotion単体では実現できません**
-
-これらが必要なタスクは「運用Commands方式」を使うか、「設計書作成」として処理します。
-
-</aside>
-
-```yaml
-Notion単体で不可能なこと:
-  
-  1. ページ埋め込みでの複雑なAI処理:
-    - AI Blocks: 実用に耐えない（使わない）
-    - Button経由のAI処理: 実装不可
-    → 代替案: 運用Commands方式（@mention実行）
-    
-  2. 自動ワークフロー:
-    - ステータス変更時の自動処理
-    - 条件分岐による自動タスク生成
-    - トリガーベースの自動化
-    → 代替案: 運用Commands方式で手動実行
-    
-  3. 外部情報アクセス:
-    - URL先の情報取得
-    - Web検索
-    - 外部API呼び出し
-    → 代替案: 運用Commands方式（AIの検索機能活用）
-    
-  4. サーバーサイドコード実行:
-    - Python/JavaScript等のコード実行
-    - 複雑なアルゴリズム処理
-    - 大量データの一括処理
-    → 代替案: 運用Commands方式（AI実行）
+  3. GUI操作:
+    - Figma連携
+    - ブラウザDevTools
+    - Vercel Dashboard操作
+    → 対応: 手順を文書化して提示
 ```
 
 ---
 
 ## 🎯 タスクタイプ別の実装方針
 
-### Type: `implementation` - DB設計
+### Type: `design` - 設計タスク
 
 **該当するタスク：**
-
-- "○○DBの作成"
-- "データ構造設計"
-- "入力処理機能"
+- "○○の設計"
+- "アーキテクチャ検討"
+- "API仕様策定"
 
 **実装内容：**
 
 ```yaml
 成果物:
-  1. Database作成:
-    - プロパティ定義（型・必須項目・デフォルト値）
-    - Relation設定（他DBとの関連付け）
-    - Formula設定（計算ロジック）
-    - AI自動入力設定（必要に応じて）
+  1. 設計ドキュメント:
+    - docs/architecture/README.md
+    - docs/api/openapi.yaml
+    - docs/database/er-diagram.mermaid
     
-  2. View作成:
-    - 用途別View（Board/Table/Calendar等）
-    - Filter・Sort設定
-    - Group by設定
+  2. 技術選定記録:
+    - docs/architecture/decisions/*.md (ADR)
     
-  3. Form作成:
-    - 入力フォーム設計
-    - 必須項目設定
-    
-  4. ドキュメント作成:
-    - DB設計書（プロパティ一覧・用途）
-    - 運用ガイド（入力方法・注意点）
+  3. スキーマ定義【必須】:
+    - prisma/schema.prisma（DB設計の場合）
+    - src/types/api.ts（API設計の場合）
 ```
 
 ---
 
-### Type: `implementation` - ロジック実装
+### Type: `implementation` - 実装タスク
 
 **該当するタスク：**
-
-- "○○分析ロジック"
-- "○○生成アルゴリズム"
-- "○○処理機能"
+- "○○の実装"
+- "○○機能開発"
+- "○○コンポーネント作成"
 
 **実装内容：**
 
 ```yaml
 成果物:
-  1. 運用Commands作成【必須】:
-    - コマンドページ作成
-    - Input/Output定義
-    - 実行手順定義
-    - テストケース
+  1. ソースコード【必須】:
+    - 機能実装コード
+    - 型定義
+    - ユーティリティ
     
-  2. ドキュメント作成:
-    - 処理ロジック設計書
-    - 実装詳細
-    - 使用方法
+  2. テストコード【推奨】:
+    - 単体テスト
+    - 統合テスト（必要に応じて）
+    
+  3. ドキュメント:
+    - JSDoc / TSDoc
+    - 使用方法のコメント
 ```
 
-1. Operation Command: analyze_article
-    
-    実行フロー:
-    
-    1. 記事入力DBから未処理レコード取得
-    2. 記事分析AI実行
-    3. 分析結果を構造化して保存
-    4. ステータスを「完了」に更新
-2. ドキュメント: 記事分析仕様書
-    - 分析項目定義
-    - 出力フォーマット
-    - サンプル結果
+**実装例（サービス層）:**
 
-```
-注意:
-  - AI Blocksは使わない
-  - 複雑な処理は運用Commands方式で実装
+```typescript
+// src/services/project.service.ts
+import { projectRepository } from '@/repositories/project.repository'
+import { CreateProjectInput, UpdateProjectInput } from '@/types/api'
+import { createError } from '@/lib/errors'
+
+export class ProjectService {
+  async getById(id: string, userId: string) {
+    const project = await projectRepository.findById(id)
+    
+    if (!project) {
+      throw createError.notFound('プロジェクト')
+    }
+
+    if (project.ownerId !== userId) {
+      throw createError.forbidden('アクセス権限がありません')
+    }
+
+    return project
+  }
+
+  async create(input: CreateProjectInput, userId: string) {
+    return projectRepository.create({
+      ...input,
+      ownerId: userId,
+    })
+  }
+
+  async update(id: string, input: UpdateProjectInput, userId: string) {
+    await this.getById(id, userId) // 権限チェック
+    return projectRepository.update(id, input)
+  }
+
+  async delete(id: string, userId: string) {
+    await this.getById(id, userId) // 権限チェック
+    await projectRepository.delete(id)
+  }
+}
+
+export const projectService = new ProjectService()
 ```
 
 ---
 
-### Type: `design` - UI/フォーマット設計
+### Type: `validation` - 検証タスク
 
 **該当するタスク：**
-
-- "○○フォーマット整備"
-- "UI設計"
-- "テンプレート作成"
-
-**実装内容：**
-
-```yaml
-成果物:
-  1. ページテンプレート作成:
-    - 構造定義
-    - セクション分け
-    - スタイル統一
-    
-  2. サンプル作成:
-    - 実際のデータで例示
-    - 複数パターン用意
-    
-  3. ドキュメント作成:
-    - デザインガイド
-    - 使用方法
-```
-
----
-
-### Type: `validation` - 動作確認
-
-**該当するタスク：**
-
-- "○○検証"
-- "品質チェック"
+- "○○のテスト"
+- "品質検証"
 - "動作確認"
 
 **実装内容：**
 
 ```yaml
 成果物:
-  1. テストケース実行:
-    - 実データでの動作確認
-    - エッジケースのチェック
-    - パフォーマンス確認
+  1. テストコード【必須】:
+    - tests/unit/*.test.ts
+    - tests/integration/*.test.ts
+    - tests/e2e/*.spec.ts
     
-  2. 検証レポート作成:
-    - テスト結果一覧
-    - 発見した問題点
-    - 改善提案
+  2. テスト設定:
+    - vitest.config.ts
+    - playwright.config.ts
+    
+  3. テストレポート:
+    - カバレッジレポート設定
+    - CI連携設定
 ```
 
 ---
 
 ## 🛠️ 実装時の必須チェックリスト
 
-<aside>
-✅
-
-**AIPO_04_execute 実行時、必ず確認すること**
-
-</aside>
+### タスク開始前
 
 ```yaml
-実装タスク開始前:
-  - [ ] このタスクはNotion機能で実現可能か？
-  - [ ] 必要なDatabase/Form/運用Commands機能は何か？
-  - [ ] 参照すべきcommand_templateはあるか？
+確認事項:
+  - [ ] 対応するコマンドテンプレートを特定したか？
+  - [ ] 必要な入力情報を収集したか？
+  - [ ] 成果物の種類と配置場所を決めたか？
+```
 
-実装中:
-  - [ ] Databaseを実際に作成したか？
-  - [ ] プロパティ・Viewを設定したか？
-  - [ ] Formを作成したか（必要な場合）？
-  - [ ] 運用Commandsを作成したか（ロジック実装の場合）？
-  - [ ] 実際に動作するか確認したか？
+### 実装中
 
-完了判定:
-  - [ ] Database/Formが実在するか？
-  - [ ] 運用Commandsが実在し、実行可能か？
-  - [ ] 実際に入力・処理・出力ができるか？
-  - [ ] ドキュメントが整備されているか？
-  - [ ] 他のタスクから参照可能な状態か？
+```yaml
+確認事項:
+  - [ ] ファイルを実際に作成/更新したか？
+  - [ ] 型定義は正しいか？
+  - [ ] Lintエラーは解消したか？
+  - [ ] インポートパスは正しいか？
+```
 
-禁止事項:
-  - [ ] AI Blocksを使っていないか？
-  - [ ] Buttonで処理トリガーを実装していないか？
-  - [ ] 自動ワークフローを実装していないか？
+### 完了判定
+
+```yaml
+確認事項:
+  - [ ] 成果物ファイルが存在するか？
+  - [ ] 設計書だけでなくコードも生成したか？
+  - [ ] テストコードを作成したか（実装タスクの場合）？
+  - [ ] ドキュメントを更新したか？
+```
+
+---
+
+## 🔄 AIPOフェーズとの連携
+
+```yaml
+# Senseフェーズ (L0)
+成果物: 仮説リスト、コンセプトドキュメント
+
+# Focusフェーズ (L0-L1)
+成果物: PRD、ユーザーストーリー、優先度リスト
+
+# Discoverフェーズ (L1-L2)
+成果物: 設計書、スキーマ、API仕様
+
+# Deliverフェーズ (L2-L3)
+成果物: ソースコード、テストコード
+
+# Operationフェーズ (L3-L4)
+成果物: CI/CD、監視設定、運用ドキュメント
 ```
 
 ---
 
 ## 📚 参考リソース
 
-### Notion公式ドキュメント
+### コマンドテンプレート
 
-| 機能 | ドキュメントURL |
-| --- | --- |
-| Database | [https://www.notion.so/help/intro-to-databases](https://www.notion.so/help/intro-to-databases) |
-| Form | [https://www.notion.so/help/guides/creating-a-form-with-a-notion-database](https://www.notion.so/help/guides/creating-a-form-with-a-notion-database) |
-| Formula | [https://www.notion.so/help/formulas](https://www.notion.so/help/formulas) |
-| AI | [https://www.notion.so/help/guides/using-notion-ai](https://www.notion.so/help/guides/using-notion-ai) |
-
-<td>AI自動入力</td>
-
-<td>[https://www.notion.so/help/guides/using-ai-autofill-in-databases](https://www.notion.so/help/guides/using-ai-autofill-in-databases)</td>
+| カテゴリ | テンプレート |
+|---------|-------------|
+| システム構築 | [system_building_templates](command-templates/system_building_templates.md) |
+| プロジェクト管理 | [project_management_templates](command-templates/project_management_templates.md) |
+| タスク管理 | [task_management_templates](command-templates/task_management_templates.md) |
+| リサーチ | [research_templates](command-templates/Research_templates.md) |
 
 ### 内部リソース
 
-- [CTX_command_templates](command-templates.md) - 実装テンプレート集
+- [CTX_command_templates](command-templates.md) - テンプレート集
 - [CTX_execution_rules](execution-rules.md) - 実行ルール
-- [aipo (AI-PO) system](../aipo%20(AI-PO)%20system.md) - AIPOシステム全体
+- [AIPO System](../README.md) - AIPOシステム全体
 
 ---
 
 **作成日**: 2025-12-07
-
-**最終更新**: 2025-12-08
-
-**ステータス**: 実装完了・正確性修正済み
+**最終更新**: 2026-01-20
+**ステータス**: IDE版リファクタリング完了
