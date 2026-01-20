@@ -220,7 +220,7 @@ aipo/
     ├── session-rules.md
     ├── abstract-mode.md
     ├── next-action-rules.md
-    ├── command-templates/  ← 72テンプレート
+    ├── command-templates/  ← 89テンプレート（18カテゴリ）
     ├── roles-templates/    ← 36ロール
     ├── troubleshoot.md
     ├── sync_progress.md

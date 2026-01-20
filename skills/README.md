@@ -36,7 +36,7 @@ AIPOコマンドを補足するルールファイル
 | `session-rules.md` | セッション分割・継続ルール（コンテキスト管理） | 長いタスク時 |
 | `abstract-mode.md` | L0-L4抽象度管理・Notion擬似プログラミング | 実装タスク時 |
 | `next-action-rules.md` | Next Action Protocol（完了後のナビゲーション） | コマンド完了時 |
-| `command-templates.md` | コマンドテンプレート索引（72テンプレート） | Discover時 |
+| `command-templates.md` | コマンドテンプレート索引（89テンプレート / 18カテゴリ） | Discover時 |
 | `roles-templates.md` | ロールテンプレート索引（PM、Architect等） | Sense時 |
 
 ---
@@ -55,21 +55,30 @@ AIPOコマンドを補足するルールファイル
 
 ## 📁 サブフォルダ
 
-### `command-templates/` - 72個のコマンドテンプレート
+### `command-templates/` - 89個のコマンドテンプレート（18カテゴリ）
 
 ドメイン知識をカプセル化したテンプレート集
 
 | カテゴリ | 内容 |
 |----------|------|
-| `project_management_templates/` | プロジェクト憲章、ステークホルダー分析 |
-| `task_management_templates/` | WBS、バックログ、日次タスク |
-| `communication_templates/` | 議事録、日報、Slack分析 |
-| `Discovery_templates/` | ペルソナ、課題定義、仮説マップ |
-| `Research_templates/` | 競合調査、顧客調査、市場規模 |
-| `system_building_templates/` | 汎用DB作成、運用Commands作成 |
-| `content_creation_templates/` | コンテンツリサーチ、記事企画 |
-| `presentation_templates/` | プレゼン資料、技術仕様書 |
-| `lt_presentation_templates/` | LT構成・台本、スライドデザイン |
+| `project_management_templates/` | プロジェクト憲章、ステークホルダー分析（9個） |
+| `task_management_templates/` | WBS、バックログ、日次タスク、OKR（11個） |
+| `agile_pm_templates/` | スクラム運営（1個） |
+| `communication_templates/` | 議事録、日報、Slack分析（10個） |
+| `Discovery_templates/` | ペルソナ、課題定義、仮説マップ（5個） |
+| `Research_templates/` | 競合調査、顧客調査、市場規模（4個） |
+| `business_analysis_templates/` | 業務分析、戦略コンサル、グロース施策（4個） |
+| `system_building_templates/` | アーキテクチャ、DB設計、API設計（8個） |
+| `engineering_templates/` | CI/CD、テスト戦略、データパイプライン（3個） |
+| `data_ai_templates/` | データ分析、MLシステム（2個） |
+| `design_ux_templates/` | UXリサーチ、サービス設計（2個） |
+| `marketing_sales_templates/` | マーケ戦略、カスタマーサクセス（2個） |
+| `content_creation_templates/` | コンテンツリサーチ、記事企画（6個） |
+| `presentation_templates/` | プレゼン資料、技術仕様書（3個） |
+| `lt_presentation_templates/` | LT構成・台本、スライドデザイン（5個） |
+| `specialist_templates/` | イベント企画、コミュニティ運営、採用人事（4個） |
+| `life_coaching_templates/` | お悩み整理、キャリア相談、家計診断（5個） |
+| `creative_templates/` | 物語執筆、ゲーム企画、ストーリー設計（5個） |
 
 ### `roles-templates/` - 36個のロールテンプレート
 

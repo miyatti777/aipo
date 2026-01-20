@@ -1,31 +1,175 @@
 ---
 name: command-templates
-description: "AIPOコマンドテンプレート集（プロジェクト管理、タスク管理、コンテンツ作成等）"
+description: "AIPOコマンドテンプレート集（89テンプレート - 18カテゴリ）"
 license: "MIT"
 ---
 
 # CTX_command_templates
 
-最終更新日時: 2025年12月25日 18:22
+最終更新日時: 2026年1月20日
 
-[_task_templates](command-templates/_task_templates.md)
+# コマンドテンプレート集（Command Templates）
 
-[project_management_templates](command-templates/project_management_templates.md)
+**Claude Code Skillsとの対応**: このコンテキストはClaude Code SkillsのLevel 3（タスク実行知識）に相当します。
 
-[task_management_templates](command-templates/task_management_templates.md)
+<aside>
+💡
 
-[communication_templates](command-templates/communication_templates.md)
+**Purpose**
 
-[Research _templates](command-templates/Research%20_templates.md)
+[/aipo/03_discover](../commands/03_discover.md) のDiscover段階で使用される、コマンドテンプレートの索引です。
 
-[Discovery_templates](command-templates/Discovery_templates.md)
+タスクの性質に応じて適切なテンプレートを選択することで、高品質な成果物を効率的に生成できます。
 
-[presentation _templates](command-templates/presentation%20_templates.md)
+</aside>
 
-[system_building_templates](command-templates/system_building_templates.md)
+---
 
-[content_creation_templates](command-templates/content_creation_templates.md)
+## 📊 テンプレート一覧（89テンプレート / 18カテゴリ）
 
-[lt_presentation_templates](command-templates/lt_presentation_templates.md)
+### 📋 プロジェクト管理系
 
-[operation_command_template](command-templates/operation_command_template.md)
+| カテゴリ | テンプレート数 | 内容 |
+|----------|---------------|------|
+| [project_management_templates](command-templates/project_management_templates.md) | 9 | プロジェクト憲章、ステークホルダー分析、プロダクト定義 |
+| [task_management_templates](command-templates/task_management_templates.md) | 11 | WBS、バックログ、日次タスク、週次レビュー、OKR |
+| [agile_pm_templates](command-templates/agile_pm_templates/) | 1 | スクラム運営 |
+
+### 🔍 調査・分析系
+
+| カテゴリ | テンプレート数 | 内容 |
+|----------|---------------|------|
+| [Discovery_templates](command-templates/Discovery_templates.md) | 5 | ペルソナ、課題定義、仮説マップ、ソリューションマップ |
+| [Research_templates](command-templates/Research%20_templates.md) | 4 | 競合調査、顧客調査、市場規模推定 |
+| [business_analysis_templates](command-templates/business_analysis_templates/) | 4 | 業務分析、戦略コンサル、グロース施策、業務改善 |
+
+### 💻 技術系
+
+| カテゴリ | テンプレート数 | 内容 |
+|----------|---------------|------|
+| [system_building_templates](command-templates/system_building_templates.md) | 8 | アーキテクチャ、DB設計、API設計、フロントエンド、バックエンド |
+| [engineering_templates](command-templates/engineering_templates/) | 3 | CI/CD構築、テスト戦略、データパイプライン |
+| [data_ai_templates](command-templates/data_ai_templates/) | 2 | データ分析、MLシステム |
+
+### 🎨 デザイン系
+
+| カテゴリ | テンプレート数 | 内容 |
+|----------|---------------|------|
+| [design_ux_templates](command-templates/design_ux_templates/) | 2 | UXリサーチ、サービス設計 |
+
+### 📣 マーケティング/セールス系
+
+| カテゴリ | テンプレート数 | 内容 |
+|----------|---------------|------|
+| [marketing_sales_templates](command-templates/marketing_sales_templates/) | 2 | マーケ戦略、カスタマーサクセス |
+
+### 📝 コンテンツ/プレゼン系
+
+| カテゴリ | テンプレート数 | 内容 |
+|----------|---------------|------|
+| [content_creation_templates](command-templates/content_creation_templates.md) | 6 | コンテンツリサーチ、記事企画、執筆管理、スライド作成 |
+| [presentation_templates](command-templates/presentation%20_templates.md) | 3 | プレゼン資料、技術仕様書、分析レポート |
+| [lt_presentation_templates](command-templates/lt_presentation_templates.md) | 5 | LT構成・台本、スライドデザイン、デモ準備 |
+
+### 💬 コミュニケーション系
+
+| カテゴリ | テンプレート数 | 内容 |
+|----------|---------------|------|
+| [communication_templates](command-templates/communication_templates.md) | 10 | 議事録、日報、Slack分析、スプリントゴール |
+
+### 🔬 専門職系
+
+| カテゴリ | テンプレート数 | 内容 |
+|----------|---------------|------|
+| [specialist_templates](command-templates/specialist_templates/) | 4 | イベント企画、コミュニティ運営、採用人事、リサーチ計画 |
+
+### 🌟 ライフ/クリエイティブ系
+
+| カテゴリ | テンプレート数 | 内容 |
+|----------|---------------|------|
+| [life_coaching_templates](command-templates/life_coaching_templates/) | 5 | お悩み整理、キャリア相談、家計診断、旅行計画、学習計画 |
+| [creative_templates](command-templates/creative_templates/) | 5 | 物語執筆、ゲーム企画、ストーリー設計、パーティー企画、フィットネス計画 |
+
+### ⚙️ その他
+
+| カテゴリ | テンプレート数 | 内容 |
+|----------|---------------|------|
+| [operation_command_template](command-templates/operation_command_template.md) | 1 | 運用コマンド作成 |
+| [_task_templates](command-templates/_task_templates.md) | - | タスク生成の基本テンプレート |
+
+---
+
+## 🔄 使用方法
+
+### 1. 自動選択（推奨）
+
+[/aipo/03_discover](../commands/03_discover.md) がタスクの性質から自動判定し、最適なテンプレートを提案します。
+
+### 2. 明示指定
+
+ユーザーが特定のテンプレートを指定することも可能：
+
+```
+@CMD_prj_01_プロジェクト憲章.md を参照してタスクを実行
+```
+
+### 3. テンプレート選定ガイド
+
+| タスクの種類 | 推奨テンプレート |
+|-------------|-----------------|
+| 新プロジェクト開始 | project_management_templates |
+| タスク整理・計画 | task_management_templates |
+| ユーザー理解 | Discovery_templates |
+| 市場調査 | Research_templates |
+| 業務改善 | business_analysis_templates |
+| システム構築 | system_building_templates, engineering_templates |
+| データ分析 | data_ai_templates |
+| UI/UX改善 | design_ux_templates |
+| マーケティング | marketing_sales_templates |
+| コンテンツ作成 | content_creation_templates |
+| プレゼン準備 | presentation_templates, lt_presentation_templates |
+| 会議・報告 | communication_templates |
+| イベント・HR | specialist_templates |
+| 人生相談・学習 | life_coaching_templates |
+| クリエイティブ | creative_templates |
+
+---
+
+## 🛠️ テンプレートの追加方法
+
+新しいテンプレートを追加する場合：
+
+1. 適切なカテゴリフォルダ配下に新しいテンプレートファイルを作成
+2. 以下の形式で定義：
+    - ファイル名: `CMD_[カテゴリ]_[名前].md`
+    - 最初に質問セクション
+    - 目的・必要入力
+    - 実行手順
+    - 生成物
+    - 活用方法
+3. カテゴリの索引ファイル（`*_templates.md`）に追加
+4. このファイルのテンプレート数を更新
+
+---
+
+## 📊 テンプレート統計
+
+| 指標 | 値 |
+|------|-----|
+| 総テンプレート数 | 89 |
+| カテゴリ数 | 18 |
+| プロジェクト管理系 | 21 |
+| 調査・分析系 | 13 |
+| 技術系 | 13 |
+| コンテンツ/プレゼン系 | 14 |
+| コミュニケーション系 | 10 |
+| 専門職/ライフ系 | 14 |
+| デザイン/マーケ系 | 4 |
+
+---
+
+**作成日**: 2025-12-25
+
+**最終更新**: 2026-01-20
+
+**ステータス**: Active
