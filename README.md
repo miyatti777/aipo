@@ -46,7 +46,7 @@
 
 ```bash
 # リポジトリをクローン
-git clone https://github.com/explaza/aipo.git
+git clone https://github.com/miyatti777/aipo.git
 cd aipo
 
 # Cursor用にインストール

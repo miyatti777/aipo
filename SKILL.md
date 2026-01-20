@@ -5,7 +5,7 @@ description: "AI Product Owner - GOALだけ伝えればAIが勝手に仕事を�
 author: miyatti (@miyatti)
 author_url: https://x.com/miyatti
 license: MIT
-repository: https://github.com/explaza/aipo
+repository: https://github.com/miyatti777/aipo
 keywords:
   - product-owner
   - task-decomposition
