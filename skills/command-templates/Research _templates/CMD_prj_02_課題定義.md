@@ -111,10 +111,10 @@ Rules（`basic/02_pmbok_discovery.mdc`）に準拠し、プロジェクトで解
 - 「02\_発見\_\_ペルソナ作成」で課題を抱えるユーザーを具体化
 - 「02\_発見\_\_検証計画」で課題仮説の検証計画を策定
 
-## 参照Rule
+## 参照
 
-- `.cursor/rules/basic/02_pmbok_discovery.mdc`（課題定義）
-- `.cursor/rules/basic/00_master_rules.mdc`
+- Discovery_templates/CMD_prj_02_課題定義.md（課題定義）
+- AIPO execution-rules.md
 
 ## トラブルシュート
 

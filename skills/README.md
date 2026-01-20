@@ -71,14 +71,20 @@ AIPOコマンドを補足するルールファイル
 | `presentation_templates/` | プレゼン資料、技術仕様書 |
 | `lt_presentation_templates/` | LT構成・台本、スライドデザイン |
 
-### `roles-templates/` - 4個のロールテンプレート
+### `roles-templates/` - 36個のロールテンプレート
 
-| ロール | 視点 |
-|--------|------|
-| `product_manager_focus.md` | プロダクト戦略、ユーザー価値 |
-| `system_architect_focus.md` | 技術設計、スケーラビリティ |
-| `content_strategist_focus.md` | コンテンツ企画、SEO |
-| `generic_focus.md` | 汎用的な問題解決 |
+| カテゴリ | ロール例 |
+|----------|---------|
+| ビジネス/経営系 | business_analyst, strategy_consultant, growth_hacker, operations_manager |
+| デザイン/UX系 | ux_designer, service_designer |
+| エンジニアリング系 | system_architect, devops_engineer, data_engineer, security_engineer, qa_engineer |
+| データ/AI系 | data_scientist, ai_ml_engineer |
+| マーケ/セールス系 | marketing_manager, sales_operations, customer_success |
+| プロジェクト管理系 | product_manager, scrum_master, program_manager |
+| 専門職系 | research_lead, community_manager, hr_people_ops, legal_compliance, event_planner |
+| ライフ系 | life_coach, career_advisor, financial_advisor, travel_planner, learning_facilitator |
+| クリエイティブ系 | creative_writer, game_designer, storyteller, party_planner, personal_trainer |
+| 汎用 | generic, content_strategist |
 
 ---
 
@@ -146,7 +152,7 @@ AIPOコマンドを補足するルールファイル
 
 ## 📚 コマンドファイル
 
-場所: `.cursor/commands/aipo/`
+場所: `commands/`
 
 ```
 /aipo/01_sense      - Goal設定・ロール選択（Sense）
@@ -156,7 +162,7 @@ AIPOコマンドを補足するルールファイル
 /aipo/05_operation  - 運用コマンド実行（Operation）
 ```
 
-詳細は [Commands README](../../../.cursor/commands/aipo/README.md) を参照
+詳細は [Commands README](../commands/README.md) を参照
 
 ---
 

@@ -303,7 +303,7 @@ Layer: @[対象LayerのURL]
 <aside>
 💡
 
-[/aipo/01_sense](.cursor/commands/aipo/01_sense.md) を実行してください
+[/aipo/01_sense](../commands/01_sense.md) を実行してください
 
 🔴 最重要原則（必読）:
 

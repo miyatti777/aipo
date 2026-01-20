@@ -221,7 +221,7 @@ aipo/
     ├── abstract-mode.md
     ├── next-action-rules.md
     ├── command-templates/  ← 72テンプレート
-    ├── roles-templates/    ← 4ロール
+    ├── roles-templates/    ← 36ロール
     ├── troubleshoot.md
     ├── sync_progress.md
     ├── task_completion_rules.md
