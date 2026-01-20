@@ -28,4 +28,4 @@
 
 [CMD_cnt_05_コンテンツ公開](content_creation_templates/CMD_cnt_05_%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84%E5%85%AC%E9%96%8B.md)
 
-[CMD_cnt_06_プレゼンスライド作成（Notionページ分割方式）](content_creation_templates/CMD_cnt_06_%E3%83%97%E3%83%AC%E3%82%BC%E3%83%B3%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89%E4%BD%9C%E6%88%90%EF%BC%88Notion%E3%83%9A%E3%83%BC%E3%82%B8%E5%88%86%E5%89%B2%E6%96%B9%E5%BC%8F%EF%BC%89.md)
+[CMD_cnt_06_プレゼンスライド作成（Markdownファイル分割方式）](content_creation_templates/CMD_cnt_06_%E3%83%97%E3%83%AC%E3%82%BC%E3%83%B3%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89%E4%BD%9C%E6%88%90%EF%BC%88Markdown%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%88%86%E5%89%B2%E6%96%B9%E5%BC%8F%EF%BC%89.md)

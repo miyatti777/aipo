@@ -13,7 +13,7 @@ variables:
   presentation_time: "10分"  # 発表時間
   script_page_url: ""  # 台本ページURL（T001の成果物）
   slide_count_target: "10〜15枚"  # 目標スライド枚数
-  design_tool: "Notion / Slides / Keynote"  # 使用ツール
+  design_tool: "Markdown(Marp) / Slides / Keynote"  # 使用ツール
 ```
 
 ---
