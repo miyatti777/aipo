@@ -93,7 +93,7 @@ Notion AIチャットで以下のように実行してください：
 
 1. Flow/YYYYMM/YYYY-MM-DD/📋 今日のタスク - YYYY-MM-DD を検索・読み込み
 2. ページが存在しない場合:
-    - [CMD_日次タスク作成](https://www.notion.so/CMD_-2c4b133701be81fe9704dbf4c0928383?pvs=21) を自動実行
+    - CMD_日次タスク作成 を自動実行
     - 作成されたページを読み込み
 3. **既存の構造を分析**：
     - 🔴 緊急・重要セクションの有無と位置を確認
@@ -224,7 +224,7 @@ Notion AIチャットで以下のように実行してください：
 3. **自分のタスクが0件の場合**
     - メッセージ: 「あなたに割り当てられたタスクは見つかりませんでした。他のメンバーのタスクを確認しますか？」
 4. **今日のタスクページが存在しない場合**
-    - 自動的に [CMD_日次タスク作成](https://www.notion.so/CMD_-2c4b133701be81fe9704dbf4c0928383?pvs=21) を実行して作成
+    - 自動的に CMD_日次タスク作成 を実行して作成
 
 ### 実行時間
 
@@ -347,9 +347,9 @@ Notion AIチャットで以下のように実行してください：
 
 ## 🔗 関連リソース
 
-- [CMD_日次タスク作成](https://www.notion.so/CMD_-2c4b133701be81fe9704dbf4c0928383?pvs=21)（連携コマンド）
-- [CMD_com_Slack依頼分析＆タスク化](https://www.notion.so/CMD_com_Slack-0d3c33e38d6247c6bdc495f06cb1cb0d?pvs=21)（依頼対応フロー）
-- [CMD_議事録生成](https://www.notion.so/CMD_-dce0c0895fcb4e9d976f60dbe4c94acd?pvs=21)（議事録作成）
+- CMD_日次タスク作成（連携コマンド）
+- CMD_com_Slack依頼分析＆タスク化（依頼対応フロー）
+- CMD_議事録生成（議事録作成）
 - [CTX_abstract_mode_rules](../../abstract-mode.md)
 
 ---

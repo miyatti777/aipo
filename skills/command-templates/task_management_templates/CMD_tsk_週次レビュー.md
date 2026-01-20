@@ -10,7 +10,7 @@
 
 ## 目的
 
-1週間の作業を振り返り、成果・課題・学びを整理します。[Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) での日々の作業を分析し、完成した振り返りを [1_sense](https://www.notion.so/1_sense-280b133701be811d89b5fed1f24c72b0?pvs=21) に保管します。
+1週間の作業を振り返り、成果・課題・学びを整理します。Flow での日々の作業を分析し、完成した振り返りを Stock/1_sense に保管します。
 
 ## 必要入力
 
@@ -23,7 +23,7 @@
 
 ### ステップ1: データ収集
 
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) から今週の日次タスクを収集
+- Flow から今週の日次タスクを収集
 - 完了率を計算
 - 時間の使い方を分析
 
@@ -66,13 +66,13 @@
 
 ### Flow での作業
 
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) / 202512 に weekly_review_[draft.md](http://draft.md) を作成
+- Flow/YYYYMM に weekly_review_draft.md を作成
 - 日次タスクを参照しながら作成
 - チームメンバーからフィードバックを受ける
 
 ### Stock への保管
 
-- 完成した振り返りを [1_sense](https://www.notion.so/1_sense-280b133701be811d89b5fed1f24c72b0?pvs=21) / weekly_reviews / 2025 へ移動
+- 完成した振り返りを Stock/1_sense/weekly_reviews/YYYY へ移動
 - 月次・四半期レビューの参考資料として保管
 - ベストプラクティスの抽出
 

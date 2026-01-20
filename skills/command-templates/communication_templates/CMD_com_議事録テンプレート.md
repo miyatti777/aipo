@@ -30,7 +30,7 @@
 
 ### ステップ2: 議事録テンプレート生成
 
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) に議事録ページを作成
+- Flow に議事録ページを作成
 - 基本情報を自動入力
 - アジェンダごとのセクションを生成
 
@@ -82,13 +82,13 @@
 
 ### Flow での作業
 
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) / 202512 / [日付] に会議ごとの議事録を作成
+- Flow/YYYYMM/YYYY-MM-DD に会議ごとの議事録を作成
 - 会議中にリアルタイムで記録
 - 会議後24時間以内に参加者に共有
 
 ### Stock への保管
 
-- 重要な議事録は [1_sense](https://www.notion.so/1_sense-280b133701be811d89b5fed1f24c72b0?pvs=21) / meetings / [プロジェクト名] へ移動
+- 重要な議事録は Stock/1_sense/meetings/[プロジェクト名] へ移動
 - プロジェクト完了時の振り返り資料として保管
 - 意思決定の履歴として参照
 

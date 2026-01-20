@@ -21,7 +21,7 @@
 
 ### ステップ1: ミーティングノートの収集
 
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) から対象のミーティングノートを取得
+- Flow から対象のミーティングノートを取得
 - 複数回の会議の場合は全て収集
 - AIミーティングノートの文字起こしも参照
 
@@ -79,13 +79,13 @@
 
 ### Flow での作業
 
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) でミーティングサマリーのドラフトを作成
+- Flow でミーティングサマリーのドラフトを作成
 - 関係者にレビュー依頼
 - フィードバックを反映
 
 ### Stock への保管
 
-- 確定版を [1_sense](https://www.notion.so/1_sense-280b133701be811d89b5fed1f24c72b0?pvs=21) / meeting_summaries へ保管
+- 確定版を Stock/1_sense/meeting_summaries へ保管
 - プロジェクトのマイルストーン資料として活用
 - ステークホルダー報告に利用
 

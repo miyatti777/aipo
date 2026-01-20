@@ -35,13 +35,13 @@
 
 ### Flow での利用
 
-- 日次タスクは [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) 配下の日付フォルダで管理
+- 日次タスクは Flow 配下の日付フォルダで管理
 - 作業中のタスクリストを日々更新
 - タスク実行メモを記録
 
 ### Stock への保管
 
-- 完了した週次レビューは [1_sense](https://www.notion.so/1_sense-280b133701be811d89b5fed1f24c72b0?pvs=21) へ移動
+- 完了した週次レビューは Stock/1_sense へ移動
 - 振り返りドキュメントをアーカイブ
 - ベストプラクティスを蓄積
 

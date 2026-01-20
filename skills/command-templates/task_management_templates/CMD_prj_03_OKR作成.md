@@ -1,6 +1,6 @@
 # CMD_prj_03_OKR作成
 
-最終更新日時: 2025年12月25日 9:06
+最終更新日時: 2026年1月20日
 
 # 03 計画: OKR作成
 
@@ -16,7 +16,7 @@
 
 ## 目的
 
-Rules（`basic/03_pmbok_planning.mdc`）に準拠し、OKRドラフトを生成します。立ち上げフェーズの場合はE2E成立・計測最小・学習ループ確立を優先するテンプレを提示します。
+PMBOK計画フェーズの手法に基づき、OKRドラフトを生成します。立ち上げフェーズの場合はE2E成立・計測最小・学習ループ確立を優先するテンプレートを提示します。
 
 ## 必要入力
 
@@ -27,96 +27,99 @@ Rules（`basic/03_pmbok_planning.mdc`）に準拠し、OKRドラフトを生成�
 - Objectives: 箇条書き
 - Key Results: 各Objectiveに紐づく測定可能な成果指標
 
-## 実行手順（Rules Steps）
+## OKRの構成要素
 
-```yaml
-- trigger: "(OKR作成|OKRドラフト)"
-  priority: high
-  steps:
-    - name: "collect_okr_inputs"
-      action: "ask_questions"
-      questions:
-        - key: "program"
-          question: "プログラム/プロジェクト名は？"
-          required: true
-        - key: "period"
-          question: "期間は？（例：2025-Q4）"
-          required: true
-        - key: "owner"
-          question: "OKRオーナーは？"
-          required: true
-        - key: "phase"
-          question: "フェーズは？（立ち上げ/改善/拡張）"
-          required: true
-        - key: "objectives"
-          question: "Objectivesを1〜3件で入力してください（; 区切り）"
-          required: true
-        - key: "krs"
-          question: "各ObjectiveのKey Resultsを入力してください（Objective順に | 区切り、各KRは ; 区切りで）"
-          required: true
-      store_as: "okr_params"
+### 🎯 Objective（目標）
 
-    - name: "confirm_creation"
-      action: "confirm"
-      message: "以下の内容でOKRドラフトを作成します：\n\nプログラム: {{okr_params.program}}\n期間: {{okr_params.period}}\nオーナー: {{okr_params.owner}}\nフェーズ: {{okr_params.phase}}\n\n実行してよろしいですか？"
+- **定性的**: 数値ではなく、達成したい状態を表現
+- **鼓舞する**: チームをモチベートする内容
+- **明確**: 曖昧さがなく、何を目指すか分かる
+- **期間内**: 設定した期間内で達成可能
 
-    - name: "create_draft"
-      action: "create_markdown_file"
-      path: "{{patterns.flow_date}}/okr_{{okr_params.period | slugify}}.md"
-      template_reference: "basic/03_pmbok_planning.mdc => okr_template"
-      message: "OKRドラフトを作成しました: {{patterns.flow_date}}/okr_{{okr_params.period | slugify}}.md\n修正・追記後に確定反映できます。"
+### 📊 Key Results（主要成果指標）
 
-    - name: "notify_stock_target"
-      action: "notify"
-      message: |
-        ✅ 確定後は以下に保存されます：
-        {{dirs.stock}}/programs/{{program_id | default: okr_params.program}}/projects/{{project_id}}/documents/3_planning/okr/okr_{{okr_params.period | slugify}}.md
+- **測定可能**: 数値で測れる
+- **具体的**: 達成条件が明確
+- **野心的**: ストレッチゴール（達成率70%程度が理想）
+- **2-4個**: 1つのObjectiveに対して2-4個
+
+## OKRテンプレート
+
+```markdown
+# OKR（[期間]）
+
+## 基本情報
+- **プログラム/プロジェクト**: [名前]
+- **期間**: [YYYY-QN]
+- **オーナー**: [名前]
+- **フェーズ**: [立ち上げ/改善/拡張]
+- **作成日**: [YYYY-MM-DD]
+
+---
+
+## Objective 1: [定性的な目標]
+
+### Key Results
+| # | Key Result | 現状 | 目標 | 達成率 |
+|---|-----------|------|------|--------|
+| 1-1 | [測定可能な指標] | [現在値] | [目標値] | -% |
+| 1-2 | [測定可能な指標] | [現在値] | [目標値] | -% |
+| 1-3 | [測定可能な指標] | [現在値] | [目標値] | -% |
+
+---
+
+## Objective 2: [定性的な目標]
+
+### Key Results
+| # | Key Result | 現状 | 目標 | 達成率 |
+|---|-----------|------|------|--------|
+| 2-1 | [測定可能な指標] | [現在値] | [目標値] | -% |
+| 2-2 | [測定可能な指標] | [現在値] | [目標値] | -% |
+
+---
+
+## 計測・レビュー運用
+- **週次**: Key Resultsの進捗確認
+- **月次**: Objectiveに対する達成度レビュー
+- **期末**: 最終評価とふりかえり
+```
+
+### 立ち上げフェーズ例
+
+```markdown
+## Objective 1: MVP v0.1のE2Eを成立させる
+- KR1: 主要ユースケースのE2Eデモ完成
+- KR2: 最小限の監査ログ実装
+- KR3: 権限機能（招待/閲覧/実行）α版
+
+## Objective 2: ユーザーと検証ループを回す
+- KR1: プロトタイプ2ラウンド完了
+- KR2: ユーザーテスト5回実施 / インサイト30件
+- KR3: パイロット計画承認
+
+## Objective 3: アラインメントとMVP定義
+- KR1: PRD v1.0 承認
+- KR2: テンプレート3種の仕様合意
+- KR3: リスクTop10の週次更新
 ```
 
 ## 生成物
 
-- Flow/.../okr_yyyyqN.md（ドラフト）
-- Stock/.../3_planning/okr/okr_yyyyqN.md（確定版）
-
-## テンプレ（参考）
-
-```markdown
----
-doc_targets: [okr, planning]
-importance: 5
-program: {{program}}
-project: {{project_id}}
-period: {{period}}
-owner: {{owner}}
-last_update: {{today}}
----
-
-# OKR（{{period}}）- {{program}} / {{project_id}}
-
-{{#if (eq phase "立ち上げ")}}
-## Objective 1: MVP v0.1のE2Eを成立させる
-- KR1: 主要ユースケースのE2Eデモ（動画）
-- KR2: 最小ガードレール（評価ログ/監査ログ）
-- KR3: 権限α実装（招待/閲覧/実行）
-
-## Objective 2: 社内デザイナーと検証ループを回す
-- KR1: プロトタイプ2ラウンド
-- KR2: ユーザテスト5回 / インサイト30件 / 改善10件
-- KR3: 社内パイロット計画承認
-
-## Objective 3: アラインメントとMVP定義
-- KR1: PRD v1.0 承認 / MVPスコープ凍結
-- KR2: テンプレ3種の仕様合意と試作
-- KR3: リスクTop10を週次更新
-{{/if}}
-```
+- `okr_[期間].md`（ドラフト）
+- `documents/3_planning/okr/okr_[期間].md`（確定版）
 
 ## 次に実行
 
-- 「03_ロードマップ作成」でマイルストーン化
-- 「07_週次レビュー生成」で運用を定着
+- [CMD_prj_03_バックログ初期化](./CMD_prj_03_バックログ初期化.md) でOKRに基づくバックログ作成
+- [CMD_prj_07_日次タスク作成](./CMD_prj_07_日次タスク作成.md) で日次のタスク管理開始
 
-## 参照Rule
+## 🔗 関連リソース
 
-- `.cursor/rules/basic/03_pmbok_planning.mdc`
-- `.cursor/rules/basic/00_master_rules.mdc`
+- [execution-rules](../../execution-rules.md)
+- [task_completion_rules](../../task_completion_rules.md)
+
+## トラブルシュート
+
+- Key Resultsが測定できない場合は、より具体的な指標に分解
+- Objectiveが大きすぎる場合は、期間を短くするか分割
+- 達成率が常に100%の場合は、より野心的な目標に調整

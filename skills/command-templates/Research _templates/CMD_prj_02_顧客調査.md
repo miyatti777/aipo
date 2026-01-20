@@ -1,6 +1,6 @@
 # CMD_prj_02_顧客調査
 
-最終更新日時: 2025年12月25日 9:06
+最終更新日時: 2026年1月20日
 
 # 02 調査: 顧客調査（Web検索ベース）
 
@@ -13,7 +13,7 @@
 
 ## 目的
 
-Rules（`basic/00_master_rules.mdc`）に準拠し、Web検索を活用した顧客調査レポートを自動生成します。ターゲットオーディエンスの特性、消費者行動、ニーズを調査します。
+PMBOKリサーチフェーズの手法に基づき、Web検索を活用した顧客調査レポートを自動生成します。ターゲットオーディエンスの特性、消費者行動、ニーズを調査します。
 
 ## 必要入力
 
@@ -22,75 +22,101 @@ Rules（`basic/00_master_rules.mdc`）に準拠し、Web検索を活用した顧
 - 調査トピック: 知りたい内容（例：購買行動、価格感度、利用シーン）
 - 業界背景: 業界や市場の背景情報（任意）
 
-## 実行手順（Rules Steps）
+## 顧客調査テンプレート
 
-```yaml
-- trigger: "(顧客調査|Customer Research)"
-  priority: high
-  steps:
-    - name: "collect_research_requirements"
-      action: "ask_questions"
-      questions:
-        - key: "project_name"
-          question: "調査対象のプロジェクト名を入力してください"
-          required: true
-        - key: "target_audience"
-          question: "調査したいターゲットオーディエンスを具体的に教えてください"
-          required: true
-        - key: "research_topics"
-          question: "顧客調査で特に知りたい内容やトピックを教えてください（複数可、カンマ区切り）"
-          required: true
-        - key: "industry_context"
-          question: "業界や市場の背景情報があれば教えてください"
-          required: false
-      store_as: "research_params"
-    - name: "confirm_research"
-      action: "confirm"
-      message: "以下の内容で顧客調査を実施します：\n\nプロジェクト: {{research_params.project_name}}\nターゲット: {{research_params.target_audience}}\n調査トピック: {{research_params.research_topics}}\n\nWeb検索を開始してよろしいですか？"
-    - name: "web_research_audience"
-      action: "web_search"
-      search_term: "{{research_params.target_audience}} 顧客特性 消費者行動 ニーズ 最新動向"
-      explanation: "ターゲットオーディエンスについての最新情報を収集します"
-      store_as: "audience_data"
-    - name: "web_research_topics"
-      action: "web_search"
-      search_term: "{{research_params.target_audience}} {{research_params.research_topics}} 消費者調査 市場調査 最新"
-      explanation: "指定されたトピックに関する顧客調査情報を収集します"
-      store_as: "topic_data"
-    - name: "web_research_behavior"
-      action: "web_search"
-      search_term: "{{research_params.target_audience}} 購買行動 意思決定プロセス 顧客体験 {{research_params.industry_context}}"
-      explanation: "ターゲットの購買行動や意思決定プロセスに関する情報を収集します"
-      store_as: "behavior_data"
-    - name: "analyze_web_research"
-      action: "analyze"
-      data: ["{{audience_data}}", "{{topic_data}}", "{{behavior_data}}"]
-      instructions: "収集したWeb検索データを分析し、主要な洞察、傾向、パターンを抽出します"
-```
+```markdown
+# 顧客調査レポート
 
-```yaml
-      store_as: "analyzed_results"
-    - name: "create_draft"
-      action: "create_markdown_file"
-      path: "{{patterns.flow_date}}/draft_customer_research.md"
-      template_reference: "basic/02_pmbok_research.mdc => customer_research_template"
+## 基本情報
+- **プロジェクト名**: [プロジェクト名]
+- **調査日**: [YYYY-MM-DD]
+- **ターゲット**: [ターゲットオーディエンス]
+
+## 1. ターゲット顧客の概要
+
+### 基本属性
+| 項目 | 内容 |
+|------|------|
+| 年齢層 | [XX代〜XX代] |
+| 性別 | [男性/女性/両方] |
+| 職業 | [職業カテゴリ] |
+| 地域 | [地理的情報] |
+
+### 市場規模
+- 推定人口/企業数: [数値]
+- 市場成長率: [X%/年]
+
+## 2. 消費者行動分析
+
+### 情報収集方法
+- [チャネル1]: [利用状況]
+- [チャネル2]: [利用状況]
+
+### 購買行動
+- 購買頻度: [頻度]
+- 購買場所: [オンライン/オフライン/両方]
+- 意思決定者: [個人/複数]
+
+### 購買決定要因
+1. [要因1]
+2. [要因2]
+3. [要因3]
+
+## 3. ニーズと課題
+
+### 顕在ニーズ
+- [ニーズ1]
+- [ニーズ2]
+
+### 潜在ニーズ
+- [ニーズ1]
+- [ニーズ2]
+
+### 現在の課題・不満
+- [課題1]
+- [課題2]
+
+## 4. 競合認知状況
+
+### 認知している競合
+- [競合1]: [認知度/評価]
+- [競合2]: [認知度/評価]
+
+### 競合に対する評価
+- 満足している点: [内容]
+- 不満な点: [内容]
+
+## 5. インサイト・示唆
+
+### 主要インサイト
+1. [インサイト1]
+2. [インサイト2]
+3. [インサイト3]
+
+### 推奨アクション
+- [アクション1]
+- [アクション2]
+
+## 参考情報源
+- [情報源1]: [URL/出典]
+- [情報源2]: [URL/出典]
 ```
 
 ## 生成物
 
-- Flow/.../draft_customer_research.md（ドラフト）
-- Stock/.../2_research/customer_research.md（確定版）
+- `draft_customer_research.md`（ドラフト）
+- `documents/2_research/customer_research.md`（確定版）
 
 ## 次に実行
 
-- 「02_競合調査」で競合分析を実施
-- 「02_ペルソナ作成」で顧客調査結果を基にペルソナを作成
-- 「02_課題定義」で顧客の課題を定義
+- [CMD_prj_02_競合調査](./CMD_prj_02_競合調査.md) で競合分析を実施
+- [CMD_prj_02_ペルソナ作成](../Discovery_templates/CMD_prj_02_ペルソナ作成.md) で顧客調査結果を基にペルソナを作成
+- [CMD_prj_02_課題定義](../Discovery_templates/CMD_prj_02_課題定義.md) で顧客の課題を定義
 
-## 参照Rule
+## 🔗 関連リソース
 
-- `.cursor/rules/basic/00_master_rules.mdc`（顧客調査）
-- `.cursor/rules/basic/02_pmbok_research.mdc`
+- [execution-rules](../../execution-rules.md)
+- [task_completion_rules](../../task_completion_rules.md)
 
 ## トラブルシュート
 

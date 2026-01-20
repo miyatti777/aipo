@@ -13,7 +13,7 @@
 **従来版（CMD_日次タスク作成）との違い**
 
 - Flowページ内に“新しいタスク表”は作らない
-- 代わりに、[](https://www.notion.so/0c0cc7f825a04baba77f761c43f15853?pvs=21) に登録・更新する
+- 代わりに、✅ Tasks（マニャーナ）DB に登録・更新する
 
 ---
 
@@ -37,7 +37,7 @@
 
 ## 📤 Output（反映先）
 
-対象DB: [](https://www.notion.so/0c0cc7f825a04baba77f761c43f15853?pvs=21)
+対象DB: ✅ Tasks（マニャーナ）
 
 ### A. 今日やるもの（WillDo Today）
 
@@ -54,7 +54,7 @@
 
 - Urgent = true
 - Notes に理由を1行
-- ルール参照: [variables.yaml](https://www.notion.so/variables-yaml-a40d5a2daf544c3e8f51453b594d3ea4?pvs=21)
+- ルール参照: variables.yaml
 
 ---
 
@@ -149,8 +149,8 @@ HITL確定後に、✅ Tasks（マニャーナ）へ登録する。
 
 - ListType=WillDo
 - Scheduled For=today
-- 上限: [variables.yaml](https://www.notion.so/variables-yaml-a40d5a2daf544c3e8f51453b594d3ea4?pvs=21) の willdo.max_items
-- 超過: [variables.yaml](https://www.notion.so/variables-yaml-a40d5a2daf544c3e8f51453b594d3ea4?pvs=21) の willdo.overflow_rule に従い、Diary Tomorrowへ
+- 上限: variables.yaml の willdo.max_items
+- 超過: variables.yaml の willdo.overflow_rule に従い、Diary Tomorrowへ
 
 ### 3-2. Diary Tomorrow
 
@@ -178,6 +178,6 @@ HITL確定後に、✅ Tasks（マニャーナ）へ登録する。
 
 ## ⚙️ 併用する運用コマンド（既存）
 
-- [operation_capture](https://www.notion.so/operation_capture-f818d40481df4f3f97ae8d55bd428615?pvs=21)（operation_capture）
-- [operation_plan_willdo（前夜/当日）](https://www.notion.so/operation_plan_willdo-d3b0c8102d4349f7b5cf0048d18ef21f?pvs=21)（operation_nightly_plan）
-- [operation_mark_urgent](https://www.notion.so/operation_mark_urgent-17551bd2db8b4379bed900ac7e5be2d1?pvs=21)（operation_mark_urgent）
+- operation_capture（タスクキャプチャ）
+- operation_plan_willdo（前夜/当日 WillDo計画）
+- operation_mark_urgent（緊急マーク）

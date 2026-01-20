@@ -1,6 +1,6 @@
 # CMD_prj_01_プロジェクト憲章
 
-最終更新日時: 2025年12月25日 9:06
+最終更新日時: 2026年1月20日
 
 # 01 憲章: プロジェクト憲章
 
@@ -15,7 +15,7 @@
 
 ## 目的
 
-Rules（`basic/01_pmbok_initiating.mdc`）に準拠し、プロジェクト憲章のドラフトを作成します。既存のFlow文書から関連情報を自動収集し、回答を事前入力します。
+PMBOK立ち上げフェーズの手法に基づき、プロジェクト憲章のドラフトを作成します。既存の情報から関連情報を自動収集し、回答を事前入力します。
 
 ## 必要入力
 
@@ -26,57 +26,89 @@ Rules（`basic/01_pmbok_initiating.mdc`）に準拠し、プロジェクト憲�
 - スポンサー: プロジェクトの承認者・責任者
 - 期間・予算: 開始日・終了日・概算予算
 
-## 実行手順（Rules Steps）
+## プロジェクト憲章テンプレート
 
-```
-- trigger: "プロジェクト憲章|プロジェクトチャーター"
-  priority: high
-  mode: "exclusive"
-  steps:
-    - name: "collect_existing_info"
-      action: "search_flow_files"
-      query:
-        doc_targets: "charter"
-        importance_gte: 3
-        lookback_days: 30
-      store_as: "charter_materials"
-      message: "プロジェクト憲章関連の既存情報を探しています..."
-    - name: "auto_prefill"
-      action: "prefill_question_answers"
-      target_questions: "basic/01_pmbok_initiating.mdc => charter_questions"
-      source: "{{charter_materials}}"
-      message: "見つかった情報を元に回答を自動入力しています..."
-    - name: "start_info_collection"
-      action: "call basic/01_pmbok_initiating.mdc => charter_questions"
-      message: "【プロジェクト憲章】の作成に必要な情報を収集します。以下の質問に回答してください。\n※既存の情報から推測した回答をあらかじめ入力してあります。必要に応じて修正してください。特に決まっていなければ、おまかせといっていただければ、推測で内容を作成します"
-    - name: "wait_user_responses"
-      action: "wait_for_all_answers"
-      message: "必要な回答が揃うまで他のファイル作成を行いません。"
-    - name: "confirm_document_creation"
-      action: "confirm"
-      message: "収集した情報で「プロジェクト憲章」のドラフトを作成してよろしいですか？（はい/いいえ）"
-    - name: "create_draft"
-      action: "create_markdown_file"
-      path: "{{patterns.draft_charter}}"
-      template_reference: "basic/01_pmbok_initiating.mdc => charter_template"
-      message: "ドラフトを作成しました: {{patterns.draft_charter}}\n必要に応じて修正・追記した後、Stockディレクトリへ確定反映できます。"
+```markdown
+# プロジェクト憲章
+
+## 基本情報
+- **プロジェクト名**: [プロジェクト名]
+- **作成日**: [YYYY-MM-DD]
+- **バージョン**: 1.0
+
+## 1. プロジェクト概要
+
+### 1.1 背景
+[プロジェクトが必要になった背景・経緯]
+
+### 1.2 目的
+[プロジェクトで達成したいこと]
+
+### 1.3 成功基準
+- [ ] [成功基準1]
+- [ ] [成功基準2]
+- [ ] [成功基準3]
+
+## 2. スコープ
+
+### 2.1 含まれる範囲
+- [スコープ1]
+- [スコープ2]
+
+### 2.2 含まれない範囲
+- [除外1]
+- [除外2]
+
+## 3. スケジュール
+
+| マイルストーン | 予定日 | 備考 |
+|---------------|--------|------|
+| キックオフ | [日付] | |
+| フェーズ1完了 | [日付] | |
+| 最終納品 | [日付] | |
+
+## 4. ステークホルダー
+
+| 名前 | 役割 | 責任 |
+|------|------|------|
+| [名前] | スポンサー | 最終承認 |
+| [名前] | PM | プロジェクト管理 |
+| [名前] | リード | 技術判断 |
+
+## 5. リスク・課題
+
+| リスク | 影響度 | 対策 |
+|--------|--------|------|
+| [リスク1] | 高/中/低 | [対策] |
+
+## 6. 予算
+
+- 概算予算: [金額]
+- 内訳: [詳細]
+
+## 承認
+
+| 役割 | 名前 | 日付 | 署名 |
+|------|------|------|------|
+| スポンサー | | | |
+| PM | | | |
 ```
 
 ## 生成物
 
-- Flow/.../draft\_project\_charter.md（ドラフト）
-- Stock/.../1\_initiating/project\_charter.md（確定版）
+- `draft_project_charter.md`（ドラフト）
+- `documents/1_initiating/project_charter.md`（確定版）
 
 ## 次に実行
 
-- 「01\_関係者\_\_ステークホルダー分析」でステークホルダーを詳細分析
-- 「03\_計画\_\_WBS作成」で作業分解構造を作成
-- 「03\_計画\_\_リスク分析」でリスク計画を作成
+- [CMD_prj_01_ステークホルダー分析](./CMD_prj_01_ステークホルダー分析.md) でステークホルダーを詳細分析
+- [CMD_prj_03_WBS作成](../task_management_templates/CMD_prj_03_WBS作成.md) で作業分解構造を作成
+- [CMD_prj_03_リスク分析](./CMD_prj_03_リスク分析.md) でリスク計画を作成
 
-## 参照Rule
+## 🔗 関連リソース
 
-- `.cursor/rules/basic/00_master_rules.mdc`（プロジェクト憲章）
-- `.cursor/rules/basic/01_pmbok_initiating.mdc`
+- [execution-rules](../../execution-rules.md)
+- [task_completion_rules](../../task_completion_rules.md)
 
 ## トラブルシュート
 

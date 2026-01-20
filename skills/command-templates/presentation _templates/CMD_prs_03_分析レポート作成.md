@@ -31,7 +31,7 @@
 
 ### ステップ2: 分析実施
 
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) で分析作業
+- Flow で分析作業
 - データの可視化
 - 傾向・パターンの抽出
 - 仮説の検証
@@ -41,7 +41,7 @@
 - 洞察の整理
 - ストーリーの構成
 - 推奨アクションの提案
-- [1_sense](https://www.notion.so/1_sense-280b133701be811d89b5fed1f24c72b0?pvs=21) へ確定版を保管
+- Stock/1_sense へ確定版を保管
 
 ## 分析レポートの構成
 
@@ -118,14 +118,14 @@
 
 ### Flow での作業
 
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) / 202512 / analytics で分析作業
+- Flow/YYYYMM/analytics で分析作業
 - データの加工・可視化
 - 仮説の検証
 - ドラフトレポートの作成
 
 ### Stock への保管
 
-- 確定版を [1_sense](https://www.notion.so/1_sense-280b133701be811d89b5fed1f24c72b0?pvs=21) / analytics / [プロジェクト] へ保管
+- 確定版を Stock/1_sense/analytics/[プロジェクト] へ保管
 - 定期レポートはフォルダで管理（月次、四半期等）
 - 過去レポートを比較分析に活用
 

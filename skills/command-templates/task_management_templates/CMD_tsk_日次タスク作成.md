@@ -276,9 +276,9 @@ Flow/202512/2025-12-09 （日付ページ内）
 
 ## 🔗 関連リソース
 
-- [CMD_インストール](https://www.notion.so/CMD_-2c4b133701be8149a286d1190911a8b0?pvs=21)（前提コマンド）
+- CMD_インストール（前提コマンド）
 - [CTX_abstract_mode_rules](../../abstract-mode.md)
-- [統合運営ガイド（Notion AI勉強会）](https://www.notion.so/Notion-AI-713093f763e34a89a8380c11ed078e0e?pvs=21)
+- 統合運営ガイド
 
 ---
 

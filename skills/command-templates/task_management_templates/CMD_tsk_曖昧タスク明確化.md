@@ -443,10 +443,9 @@ MTGメモ:
 
 ## 🔗 関連リソース
 
-- [](https://www.notion.so/1939e13b98214e8cb7047e517d1c64f6?pvs=21)
-- [CMD_日次タスク作成](https://www.notion.so/CMD_-2c4b133701be81fe9704dbf4c0928383?pvs=21) (類似コマンド)
-- [Notion AI](https://www.notion.so/Notion-AI-280b133701be809593b9d47a04c9ffa5?pvs=21) (コンテキスト収集ルール)
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) (作成先フォルダ)
+- CMD_日次タスク作成 (類似コマンド)
+- CTX_abstract_mode_rules (コンテキスト収集ルール)
+- Flow (作成先フォルダ)
 
 ---
 

@@ -260,9 +260,9 @@ Notion AIチャットで以下のように実行してください：
 - [ ] 🟢 関係者への展開
 
 ### 関連リンク
-- <mention-page url="[https://www.notion.so/ed1ea54854c440dbb7d740b738cf4c9f">中長期ロードマップ](https://www.notion.so/ed1ea54854c440dbb7d740b738cf4c9f">中長期ロードマップ) v1.0</mention-page>
-- <mention-page url="[https://www.notion.so/67bee34600004a6383c9a9315c2a3b0f">FDEデプロイメントプロセス</mention-page>](https://www.notion.so/67bee34600004a6383c9a9315c2a3b0f">FDEデプロイメントプロセス</mention-page>)
-- <mention-page url="[https://www.notion.so/cecd67ff1b564b18a344e2368c7459d0">AI](https://www.notion.so/cecd67ff1b564b18a344e2368c7459d0">AI) Native Platform Wiki</mention-page>
+- 中長期ロードマップ v1.0
+- FDEデプロイメントプロセス
+- AI Native Platform Wiki
 ```
 
 ---
@@ -328,8 +328,8 @@ Notion AIチャットで以下のように実行してください：
 
 - [aipo (AI-PO) system](../../../aipo%20(AI-PO)%20system.md)
 - [CTX_execution_rules](../../execution-rules.md)
-- [CMD_tsk_タスク抽出](https://www.notion.so/CMD_tsk_-434f7e69476d44959a2cb4cd0c9f4add?pvs=21)
-- [CMD_日次タスク作成](https://www.notion.so/CMD_-2c4b133701be81fe9704dbf4c0928383?pvs=21)
+- CMD_tsk_タスク抽出（タスク抽出コマンド）
+- CMD_日次タスク作成（日次タスク作成コマンド）
 
 ---
 

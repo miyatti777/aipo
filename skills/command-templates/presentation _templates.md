@@ -35,13 +35,13 @@
 
 ### Flow での利用
 
-- ドラフトは [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) で作成・編集
+- ドラフトは Flow で作成・編集
 - レビュー・フィードバックを反映
 - 複数バージョンの管理
 
 ### Stock への保管
 
-- 完成版は [1_sense](https://www.notion.so/1_sense-280b133701be811d89b5fed1f24c72b0?pvs=21) へ保管
+- 完成版は Stock/1_sense へ保管
 - バージョン管理と履歴保持
 - 再利用可能なテンプレートとして整理
 

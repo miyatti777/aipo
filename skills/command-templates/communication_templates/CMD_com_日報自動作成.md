@@ -8,7 +8,7 @@
 
 ## 目的
 
-今日の作業内容を整理して日報を自動生成します。[Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) での作業履歴を参照し、簡単な質問に答えるだけで日報を作成できます。
+今日の作業内容を整理して日報を自動生成します。Flow での作業履歴を参照し、簡単な質問に答えるだけで日報を作成できます。
 
 ## 必要入力
 
@@ -18,7 +18,7 @@
 
 ### ステップ1: 作業内容の収集
 
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) から今日の作業を自動収集
+- Flow から今日の作業を自動収集
 - 完了したタスクをリストアップ
 - ミーティングノートを参照
 
@@ -33,7 +33,7 @@
 
 - 収集した情報を整形
 - 読みやすい形式で出力
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) に保存
+- Flow に保存
 
 ## 日報の構成
 
@@ -72,13 +72,13 @@
 
 ### Flow での作業
 
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) / 202512 / [今日の日付] に daily_[report.md](http://report.md) を作成
+- Flow/YYYYMM/YYYY-MM-DD に daily_report.md を作成
 - 作業履歴を自動参照
 - 必要に応じて手動で補完
 
 ### Stock への保管
 
-- 月末に1ヶ月分の日報を [1_sense](https://www.notion.so/1_sense-280b133701be811d89b5fed1f24c72b0?pvs=21) / daily_reports / 2025 / 12 へ集約
+- 月末に1ヶ月分の日報を Stock/1_sense/daily_reports/YYYY/MM へ集約
 - 月次レビューの参考資料として活用
 - 年間の振り返りにも利用
 

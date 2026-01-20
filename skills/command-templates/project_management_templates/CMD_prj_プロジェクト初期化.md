@@ -387,8 +387,8 @@ Notion AIチャットで以下のように実行してください：
 
 ## 🔗 関連リソース
 
-- [01_pmbok_initiating](https://www.notion.so/01_pmbok_initiating-280b133701be81c798cfd299b07edff6?pvs=21)（参考元）
-- [統合運営ガイド（Notion AI勉強会）](https://www.notion.so/Notion-AI-713093f763e34a89a8380c11ed078e0e?pvs=21)
+- 01_pmbok_initiating（参考元）
+- 統合運営ガイド
 - [CTX_abstract_mode_rules](../../abstract-mode.md)
 
 ---

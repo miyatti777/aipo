@@ -35,13 +35,13 @@
 
 ### Flow での利用
 
-- 日報は [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) 配下の日付フォルダで作成
+- 日報は Flow 配下の日付フォルダで作成
 - 議事録を即座に記録
 - ミーティングノートを蓄積
 
 ### Stock への保管
 
-- 重要な議事録は [1_sense](https://www.notion.so/1_sense-280b133701be811d89b5fed1f24c72b0?pvs=21) へ整理
+- 重要な議事録は Stock/1_sense へ整理
 - プロジェクトごとのミーティング履歴
 - ナレッジとして共有可能な形式で保管
 

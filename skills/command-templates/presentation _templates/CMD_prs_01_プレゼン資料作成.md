@@ -31,7 +31,7 @@
 
 ### ステップ2: コンテンツ作成
 
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) でドラフトを作成
+- Flow でドラフトを作成
 - セクションごとに内容を整理
 - データ・図表を準備
 
@@ -103,13 +103,13 @@
 
 ### Flow での作業
 
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) / 202512 / presentations でドラフトを作成
+- Flow/YYYYMM/presentations でドラフトを作成
 - 複数バージョンを管理
 - レビューコメントを反映
 
 ### Stock への保管
 
-- 完成版を [1_sense](https://www.notion.so/1_sense-280b133701be811d89b5fed1f24c72b0?pvs=21) / presentations / [プロジェクト] へ保管
+- 完成版を Stock/1_sense/presentations/[プロジェクト] へ保管
 - 再利用可能なテンプレートとして整理
 - 過去のプレゼンをナレッジとして蓄積
 

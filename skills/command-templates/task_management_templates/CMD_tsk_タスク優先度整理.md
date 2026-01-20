@@ -23,7 +23,7 @@
 
 ### ステップ1: タスクの洗い出し
 
-- すべてのタスクを[Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21)に集約
+- すべてのタスクをFlowに集約
 - 重複タスクを統合
 - 古いタスクの見直し
 
@@ -69,13 +69,13 @@
 
 ### Flow での作業
 
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) / 202512 に task_priority_[matrix.md](http://matrix.md) を作成
+- Flow/YYYYMM に task_priority_matrix.md を作成
 - 優先度マトリクスを可視化
 - 定期的に見直し・更新
 
 ### Stock への保管
 
-- 確定した優先度リストを [1_sense](https://www.notion.so/1_sense-280b133701be811d89b5fed1f24c72b0?pvs=21) へ
+- 確定した優先度リストを Stock/1_sense へ
 - 過去の優先度判断の履歴を保管
 - 優先度決定の基準をドキュメント化
 

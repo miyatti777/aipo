@@ -178,7 +178,7 @@ Flow/202512/ 配下に全日付フォルダが準備されました。
 
 ## 🔗 関連リソース
 
-- [CMD_インストール](https://www.notion.so/CMD_-2c4b133701be8149a286d1190911a8b0?pvs=21)（前提コマンド）
+- CMD_インストール（前提コマンド）
 - [CTX_abstract_mode_rules](../../abstract-mode.md)
 
 ---

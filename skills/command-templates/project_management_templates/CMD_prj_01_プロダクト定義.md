@@ -1,12 +1,11 @@
 # CMD_prj_01_プロダクト定義
 
-最終更新日時: 2025年12月25日 9:06
+最終更新日時: 2026年1月20日
 
 # 01 初期化: プロダクト定義
 
 ## 最初に質問（実行前に回答してください）
 
-- プロダクト（プログラム）定義書を作成するか（はい/いいえ）
 - プロダクト（プログラム）名（必須）
 - 関連するテーマ/戦略（必須）
 - Mission/Vision/Value（必須）
@@ -17,7 +16,7 @@
 
 ## 目的
 
-Rules（`basic/01_pmbok_initiating.mdc`）に準拠し、プロダクト（プログラム）定義書を作成します。会話コンテキストから関連情報を自動抽出し、回答を事前入力します。
+PMBOK立ち上げフェーズの手法に基づき、プロダクト（プログラム）定義書を作成します。会話コンテキストから関連情報を自動抽出し、回答を事前入力します。
 
 ## 必要入力
 
@@ -32,63 +31,15 @@ Rules（`basic/01_pmbok_initiating.mdc`）に準拠し、プロダクト（プ�
 - Key Results: 測定可能な成果指標（1-3個）
 - 体制: PO・PM・ステークホルダーの役割
 
-## 実行手順（Rules Steps）
-
-```
-- trigger: "(プロダクト定義|プロダクト目標定義|Product定義|プログラム定義|プログラム目標定義|Program定義)(作成|つくって|)"
-  priority: high
-  steps:
-    - name: "analyze_conversation_context"
-      action: "analyze_context"
-      store_as: "context_analysis"
-      message: "会話コンテキストから関連情報を抽出しています..."
-    
-    - name: "prefill_question_answers"
-      action: "prefill_from_context"
-      source: "{{context_analysis}}"
-      questions_reference: "kcom/01_kcom_initiating.mdc => program_definition_questions"
-      store_as: "prefilled_answers"
-    
-    - name: "start_info_collection"
-      action: "call_with_suggestions"
-      target: "kcom/01_kcom_initiating.mdc => program_definition_questions"
-      suggestions: "{{prefilled_answers}}"
-      message: "【プロダクト（プログラム）定義】の作成に必要な情報を収集します。会話からの推測に基づく提案も含めています。\n提案内容が適切であれば確定し、修正が必要であれば編集してください。"
-    
-    - name: "wait_user_responses"
-      action: "wait_for_all_answers"
-      message: "必要な回答が揃うまで先に進みません。"
-    
-    - name: "confirm_document_creation"
-      action: "confirm"
-      message: "収集した情報で「プロダクト（プログラム）定義」のドラフトのファイルを実際に作成してよろしいですか？（はい/いいえ）"
-    
-    - name: "create_draft"
-      action: "edit_file"
-      path: "{{patterns.flow_date}}/draft_program_definition.md"
-      template_reference: "kcom/01_kcom_initiating.mdc => program_definition_template"
-      message: "プロダクト（プログラム）定義のドラフトのファイルを作成しました: {{patterns.flow_date}}/draft_program_definition.md\n必要に応じて修正・追記した後、Stockディレクトリへ確定反映できます。"
-    
-    - name: "notify_storage_location"
-      action: "notify"
-      message: |
-        ✅ プロダクト（プログラム）定義のドラフトのファイルを作成しました。
-        確定後は以下のパスに保存されます：
-        {{dirs.programs}}/{{program_id}}/program_definition.md
-```
-
-## 生成物
-
-- Flow/.../draft\_program\_definition.md（ドラフト）
-- Stock/programs/\[プログラム名\]/program\_definition.md（確定版）
-
 ## プロダクト定義の構成要素
 
 ### 🎯 Mission/Vision/Value
 
-- *Mission: 使命・存在意義（なぜ存在するのか）*
-- *Vision: 目指す姿・目標（どんな状態を目指すのか）*
-- *Value: 信念・価値観（何を大切にするのか）*
+| 要素 | 説明 | 例 |
+|------|------|-----|
+| **Mission** | 使命・存在意義 | 「すべての人にAIの力を届ける」 |
+| **Vision** | 目指す姿・目標 | 「2027年までに国内No.1のAIプラットフォームに」 |
+| **Value** | 信念・価値観 | 「ユーザーファースト」「透明性」「挑戦」 |
 
 ### 🚀 プロダクトビジョン
 
@@ -97,28 +48,93 @@ Rules（`basic/01_pmbok_initiating.mdc`）に準拠し、プロダクト（プ�
 
 ### 📍 プロダクトポジションステートメント
 
-- *いつ: どのような現在（時代）において*
-- *なにを: 世界（日本）で唯一の何か*
-- *どのように: 特徴的機能*
-- *どこの: 対象の地理的範囲*
-- *なぜ: 解決するニーズ（問題）*
-- *だれに: 対象ユーザー*
+| 要素 | 説明 |
+|------|------|
+| **いつ** | どのような現在（時代）において |
+| **なにを** | 世界（日本）で唯一の何か |
+| **どのように** | 特徴的機能 |
+| **どこの** | 対象の地理的範囲 |
+| **なぜ** | 解決するニーズ（問題） |
+| **だれに** | 対象ユーザー |
 
 ### 🎯 目標とOKR
 
-- *Objective: 単一の定性的ゴール*
-- *Key Results: 測定可能な成果指標（1-3個）*
+```markdown
+## OKR
+
+### Objective
+[単一の定性的ゴール]
+
+### Key Results
+1. [KR1: 測定可能な成果指標]
+2. [KR2: 測定可能な成果指標]
+3. [KR3: 測定可能な成果指標]
+```
+
+## プロダクト定義書テンプレート
+
+```markdown
+# プロダクト定義書
+
+## 基本情報
+- **プロダクト名**: [名前]
+- **作成日**: [YYYY-MM-DD]
+- **バージョン**: 1.0
+
+## 1. Mission / Vision / Value
+
+### Mission（使命）
+[何のために存在するか]
+
+### Vision（目指す姿）
+[どんな状態を目指すか]
+
+### Value（価値観）
+- [価値観1]
+- [価値観2]
+- [価値観3]
+
+## 2. プロダクトビジョン
+[数年後の理想的な姿]
+
+## 3. ポジションステートメント
+[いつ]において、[なぜ]という課題を抱える[だれに]向けて、
+[どこの]市場で[なにを]を提供する。
+[どのように]という特徴により、競合と差別化される。
+
+## 4. OKR
+
+### Objective
+[定性的ゴール]
+
+### Key Results
+1. [KR1]
+2. [KR2]
+3. [KR3]
+
+## 5. 体制
+
+| 役割 | 担当者 | 責任 |
+|------|--------|------|
+| PO | [名前] | プロダクト方向性決定 |
+| PM | [名前] | 進捗管理・調整 |
+| Tech Lead | [名前] | 技術判断 |
+```
+
+## 生成物
+
+- `draft_program_definition.md`（ドラフト）
+- `programs/[プログラム名]/program_definition.md`（確定版）
 
 ## 次に実行
 
-- 「01\_憲章\_\_プロジェクト憲章」でプロダクト配下のプロジェクト憲章を作成
-- 「03\_計画\_\_ロードマップ作成」でプロダクトロードマップを作成
-- 「07\_管理\_\_日次タスク作成」で日常管理を開始
+- [CMD_prj_01_プロジェクト憲章](./CMD_prj_01_プロジェクト憲章.md) でプロダクト配下のプロジェクト憲章を作成
+- [CMD_prj_03_OKR作成](../task_management_templates/CMD_prj_03_OKR作成.md) で詳細なOKRを設定
 
-## 参照Rule
+## 🔗 関連リソース
 
-- `.cursor/rules/basic/01_pmbok_initiating.mdc`（プロダクト定義）
-- `.cursor/rules/basic/00_master_rules.mdc`
+- [execution-rules](../../execution-rules.md)
+- [task_completion_rules](../../task_completion_rules.md)
 
 ## トラブルシュート
 

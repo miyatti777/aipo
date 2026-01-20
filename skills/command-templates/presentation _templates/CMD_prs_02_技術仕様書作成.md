@@ -29,7 +29,7 @@
 
 ### ステップ2: 設計の文書化
 
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) でドラフトを作成
+- Flow でドラフトを作成
 - アーキテクチャ図の作成
 - データモデルの定義
 - API仕様の記載
@@ -38,7 +38,7 @@
 
 - 開発チームでレビュー
 - フィードバックを反映
-- [1_sense](https://www.notion.so/1_sense-280b133701be811d89b5fed1f24c72b0?pvs=21) へ確定版を保管
+- Stock/1_sense へ確定版を保管
 
 ## 技術仕様書の構成
 
@@ -117,13 +117,13 @@
 
 ### Flow での作業
 
-- [Flow](https://www.notion.so/Flow-5ab770d94f214be29ac3626b36afef3b?pvs=21) / 202512 / tech_specs でドラフトを作成
+- Flow/YYYYMM/tech_specs でドラフトを作成
 - 段階的に詳細化
 - レビューコメントを反映しながら作成
 
 ### Stock への保管
 
-- 確定版を [1_sense](https://www.notion.so/1_sense-280b133701be811d89b5fed1f24c72b0?pvs=21) / tech_specs / [システム名] へ保管
+- 確定版を Stock/1_sense/tech_specs/[システム名] へ保管
 - バージョン管理を実施
 - 変更履歴を記録
 
