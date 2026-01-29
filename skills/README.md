@@ -55,7 +55,7 @@ AIPOコマンドを補足するルールファイル
 
 ## 📁 サブフォルダ
 
-### `command-templates/` - 89個のコマンドテンプレート（18カテゴリ）
+### `command-templates/` - 92個のコマンドテンプレート（19カテゴリ）
 
 ドメイン知識をカプセル化したテンプレート集
 
@@ -69,6 +69,7 @@ AIPOコマンドを補足するルールファイル
 | `Research_templates/` | 競合調査、顧客調査、市場規模（4個） |
 | `business_analysis_templates/` | 業務分析、戦略コンサル、グロース施策（4個） |
 | `system_building_templates/` | アーキテクチャ、DB設計、API設計（8個） |
+| `development_ax_templates/` | **🆕 DesignDoc作成、テスト計画、コードレビュー（3個）** |
 | `engineering_templates/` | CI/CD、テスト戦略、データパイプライン（3個） |
 | `data_ai_templates/` | データ分析、MLシステム（2個） |
 | `design_ux_templates/` | UXリサーチ、サービス設計（2個） |
@@ -80,13 +81,13 @@ AIPOコマンドを補足するルールファイル
 | `life_coaching_templates/` | お悩み整理、キャリア相談、家計診断（5個） |
 | `creative_templates/` | 物語執筆、ゲーム企画、ストーリー設計（5個） |
 
-### `roles-templates/` - 36個のロールテンプレート
+### `roles-templates/` - 38個のロールテンプレート
 
 | カテゴリ | ロール例 |
 |----------|---------|
 | ビジネス/経営系 | business_analyst, strategy_consultant, growth_hacker, operations_manager |
 | デザイン/UX系 | ux_designer, service_designer |
-| エンジニアリング系 | system_architect, devops_engineer, data_engineer, security_engineer, qa_engineer |
+| エンジニアリング系 | system_architect, **software_architect** 🆕, devops_engineer, data_engineer, **code_analyst** 🆕, security_engineer, qa_engineer |
 | データ/AI系 | data_scientist, ai_ml_engineer |
 | マーケ/セールス系 | marketing_manager, sales_operations, customer_success |
 | プロジェクト管理系 | product_manager, scrum_master, program_manager |

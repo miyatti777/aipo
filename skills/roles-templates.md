@@ -25,7 +25,7 @@ Goalの性質に応じて適切なロールを選択することで、以降の�
 
 ---
 
-## 📚 利用可能なロール（36種類）
+## 📚 利用可能なロール（38種類）
 
 各ロールはSkills形式で定義されており、分解原則・フェーズ構造・重要な考慮事項を含みます。
 
@@ -43,10 +43,12 @@ Goalの性質に応じて適切なロールを選択することで、以降の�
 | [ux_designer_focus](roles-templates/ux_designer_focus.md) | UXリサーチ・UI設計 | HCD/Double Diamond |
 | [service_designer_focus](roles-templates/service_designer_focus.md) | サービス体験設計 | Blueprint/Journey Map |
 
-### 💻 エンジニアリング系（4種）
+### 💻 エンジニアリング系（7種）
 | ロール | 説明 | フレームワーク |
 |--------|------|----------------|
 | [system_architect_focus](roles-templates/system_architect_focus.md) | システム設計・アーキテクチャ | C4 Model |
+| [software_architect_focus](roles-templates/software_architect_focus.md) | 🆕 DesignDoc作成・API設計 | ADR/Layered Architecture |
+| [code_analyst_focus](roles-templates/code_analyst_focus.md) | 🆕 コード解析・技術的負債可視化 | Static Analysis/Metrics |
 | [devops_engineer_focus](roles-templates/devops_engineer_focus.md) | CI/CD・インフラ自動化 | Pipeline/IaC |
 | [data_engineer_focus](roles-templates/data_engineer_focus.md) | データパイプライン | ETL/ELT |
 | [security_engineer_focus](roles-templates/security_engineer_focus.md) | セキュリティ設計 | Defense in Depth |
